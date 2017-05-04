@@ -1,0 +1,11 @@
+<div class="users form">
+{{ Form.create(user)|raw }}
+    <fieldset>
+        <legend><?= __('Add User') ?></legend>
+    	{{ Form.control('username')|raw }}
+    	{{ Form.control('password')|raw }}
+    	{{ Form.control('role', {'options': {'admin': 'Admin', 'author': 'Author'}})|raw }}
+   </fieldset>
+{{ Form.button(__('Submit'))|raw }}
+{{ Form.end|raw }}
+</div>

@@ -1,0 +1,64 @@
+@charset "UTF-8";
+/* -------------------------------------------------------------------------------------
+  config
+ ------------------------------------------------------------------------------------- */
+/*  カラー
+--------------------------------------------------*/
+/*  フォント
+--------------------------------------------------*/
+/* -------------------------------------------------------------------------------------
+  utility
+ ------------------------------------------------------------------------------------- */
+/* -------------------------------------------------------------------------------------
+	custom
+ ------------------------------------------------------------------------------------- */
+html, body, .page, .mainContent {
+  width: 1000px !important; }
+
+.sideArea,
+.spMenu,
+.siteHeader,
+.siteHeader *,
+.siteFooter,
+.card-related,
+.card-contact,
+.card-fanletter,
+.searchBox,
+.searchBox input
+.gTranslate
+.socials
+.socials *
+#google_translate_element * {
+  display: none !important; }
+
+.mainArea {
+  margin-left: 0 !important;
+  width: 100% !important; }
+
+.card {
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 00) !important;
+  -moz-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 00) !important;
+  -ms-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 00) !important;
+  -o-box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 00) !important;
+  box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 00) !important; }
+  .ie678 .card {
+    filter: none !important; }
+  .card.card-profile {
+    position: static !important;
+    margin: 0 auto !important;
+    margin-bottom: 10px !important; }
+  .card.detail {
+    position: static !important;
+    margin: 0 auto !important;
+    float: none !important; }
+    .card.detail .socials, .card.detail .socials * {
+      position: relative !important;
+      height: 0 !important;
+      overflow: hidden !important;
+      visibility: hidden;
+      opacity: 0; }
+
+.h-content-profile {
+  position: static !important;
+  margin: 0 auto !important;
+  clear: both !important; }
