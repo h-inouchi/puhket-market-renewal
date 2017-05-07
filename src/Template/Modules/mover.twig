@@ -1,0 +1,9 @@
+{% autoescape 'html' %}
+{% for mover in movers %}
+  <li>
+    <a href="{{ mover.url }}">
+      <img data-src="{{ mover.image }}" alt="プーケットマーケット"/>
+    </a>
+  </li>
+{% endfor %}
+{% endautoescape %}

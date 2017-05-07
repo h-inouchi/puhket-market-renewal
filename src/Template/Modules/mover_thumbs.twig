@@ -1,0 +1,9 @@
+{% autoescape 'html' %}
+{% for mover_thumb in mover_thumbs %}
+  <li>
+    <a href="{{ mover_thumb.url }}">
+      <img src="{{ mover_thumb.image }}"/>
+    </a>
+  </li>
+{% endfor %}
+{% endautoescape %}

@@ -56,6 +56,12 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+    $routes->connect('/api/calender', ['controller' => 'APICalender', 'action' => 'view']);
+    $routes->connect('/api/news/*', ['controller' => 'APINews', 'action' => 'view']);
+    $routes->connect('/api/search/*', ['controller' => 'APISearch', 'action' => 'view']);
+    $routes->connect('/api/onair/*', ['controller' => 'APIOnAir', 'action' => 'view']);
+
+
     /**
      * Connect catchall routes for all controllers.
      *

@@ -10,8 +10,8 @@ var _spMenu;
 
  ------------------------------------------------------------------------------------- */
 app.Conf = {
-	IS_DEBUG: true,
-//	IS_DEBUG: false,
+//	IS_DEBUG: true,
+	IS_DEBUG: false,
 	IS_DETAIL:false,
 	NEWS_RPP: 20,
 	API: {
@@ -22,6 +22,7 @@ app.Conf = {
 		},
 		"news": {
 			"path_pro": "/api/news/",
+			//"path_pro": "/-dammy-api/news.json",
 			"path": "/-dammy-api/news.json",
 			"method":"get"
 		},
@@ -48,6 +49,7 @@ app.Conf = {
 		},
 		"onair": {
 			"path_pro": "/api/onair/",
+//			"path_pro": "/-dammy-api/onair.json",
 			"path": "/-dammy-api/onair.json",
 //			"path": "/-dammy-api/onair-guest.json",
 			"method":"get"
@@ -71,11 +73,8 @@ app.Conf = {
 }
 
 
-
 /* -------------------------------------------------------------------------------------
-
  App main
-
  ------------------------------------------------------------------------------------- */
 app.Main = okb.EventDispatcher.extend({
 
@@ -104,56 +103,10 @@ app.Main = okb.EventDispatcher.extend({
 		me.trigger(me.EV_READY);///////
 	},
 
-	/*  google翻訳
-	 --------------------------------------------------*/
-	initGoogleTranslate:function(){
-		var me = this;
-
-		me.$html = $("html");
-
-		//変更の検知
-		me.$transEle = $("#google_translate_element .goog-te-menu-value span");
-		var waitInitID = setInterval(function(){
-			if(me.$transEle.text().length>2) {
-				clearInterval(waitInitID);
-				var currentStr = me.$transEle.text();
-				setInterval(function(){
-					if(currentStr!=me.$transEle.text()) {
-						currentStr = me.$transEle.text();
-						if(currentStr.indexOf("言語を選択")>=0 || currentStr.indexOf("日本語")>=0) me._changeLanguage("ja");
-						else me._changeLanguage("en");
-					}
-				}, 100);
-			}
-		}, 33);
-
-		///cookie参照
-		if( $.cookie('googtrans') ){
-			var lang = $.cookie('googtrans').split('/')[2];
-			if(lang!="ja") me._changeLanguage("en");
-			else me._changeLanguage("ja");
-		} else {
-			me._changeLanguage("ja");
-		}
-	},
-	_changeLanguage:function(lang){
-		var me = this;
-		if(lang==me.lang) return;
-		me.lang = lang;
-		me.$html.removeClass("JA EN");
-		me.$html.addClass(lang=="ja"? "JA": "EN");
-	}
-
-
 });
 
-
-
-
 /* -------------------------------------------------------------------------------------
-
 	util
-
  ------------------------------------------------------------------------------------- */
 app.loadAPI = function(apiKey, vals, callback, errorCallback){
 	var api = app.Conf.API[apiKey];
@@ -183,12 +136,8 @@ app.loadAPI = function(apiKey, vals, callback, errorCallback){
 	});
 }
 
-
-
 /* -------------------------------------------------------------------------------------
-
  SearchBox
-
  ------------------------------------------------------------------------------------- */
 app.SearchBox = okb.EventDispatcher.extend({
 
@@ -265,11 +214,7 @@ app.SearchBox = okb.EventDispatcher.extend({
 
 	_searchKeyword:function() {
 		var me = this;
-
-
 		return;//一時的にサジェストをOFF
-
-
 
 		var val = me.$input.val();
 		if(val==me.val) return;
@@ -297,7 +242,7 @@ app.SearchBox = okb.EventDispatcher.extend({
 					var link_target = '_self';
 					if(obj["direct_url"]) {
 						link = obj["direct_url"];
-						link_target = '_blank';
+						//link_target = '_blank';
 					}
 					html += '<li><a href="'+link+'" target="'+link_target+'">'+obj["title"]+'</a></li>'
 				}
@@ -330,13 +275,8 @@ app.SearchBox = okb.EventDispatcher.extend({
 
 });
 
-
-
-
 /* -------------------------------------------------------------------------------------
-
  SPMenu
-
  ------------------------------------------------------------------------------------- */
 app.SPMenu = okb.EventDispatcher.extend({
 
@@ -382,20 +322,15 @@ app.SPMenu = okb.EventDispatcher.extend({
 		me.delayID = setTimeout(function(){
 			if(isOpen) _ctrl.$body.addClass("showMenu");
 			else _ctrl.$body.removeClass("showMenu");
-			if(isOpen) me.trigger(me.EV_OPEN);///////
+			if(isOpen) me.trigger(me.EV_OPEN);
 		}, delay||0);
 	}
 
 });
 
 
-
-
-
 /* -------------------------------------------------------------------------------------
-
  init
-
  ------------------------------------------------------------------------------------- */
 _app = new app.Main();
 $(function() {
@@ -443,16 +378,4 @@ $(function() {
 	setTimeout(function(){
 		$(".mainArea, .todayArea, .sideArea").addClass("show");
 	}, 2);
-
-	//右クリック禁止
-	$(document).on("contextmenu", function(e){
-		try {
-			var tagName = e.originalEvent.target.tagName.toLowerCase();
-			if(tagName=="img") {
-				alert('当サイトの画像・顔写真などは著作権・肖像権に保護されており、無断で使用することは著作権法で禁止されています。\nAll rights reserved by oscar promotion co.,ltd.');
-				return false;
-			}
-		} catch (e) {}
-	})
-
 });
