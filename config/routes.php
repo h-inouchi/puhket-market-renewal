@@ -60,6 +60,7 @@ Router::scope('/', function (RouteBuilder $routes) {
     $routes->connect('/api/news/*', ['controller' => 'APINews', 'action' => 'view']);
     $routes->connect('/api/search/*', ['controller' => 'APISearch', 'action' => 'view']);
     $routes->connect('/api/onair/*', ['controller' => 'APIOnAir', 'action' => 'view']);
+    $routes->connect('/api/profile/*', ['controller' => 'APIProfile', 'action' => 'view']);
 
 
     /**
