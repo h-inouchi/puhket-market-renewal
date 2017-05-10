@@ -3,6 +3,7 @@ namespace App\Controller;
 
 use App\Controller\API\APIController;
 use Cake\Event\Event;
+use Cake\Utility\Hash;
 
 class APISearchController extends APIController
 {
@@ -14,9 +15,9 @@ class APISearchController extends APIController
 
     public function view()
     {
-        $page = Hashh::get($this->request->query, 'page');
-        $rpp = Hashh::get($this->request->query, 'rpp');
-        $keyword = Hashh::get($this->request->query, 'keyword');
+        $page = Hash::get($this->request->query, 'page');
+        $rpp = Hash::get($this->request->query, 'rpp');
+        $keyword = Hash::get($this->request->query, 'keyword');
 
         $news = [
             "blog" => "news",
