@@ -1,9 +1,9 @@
 <?php
 namespace App\Controller\API;
 
-use Cake\Controller\Controller;
+use App\Controller\AppController;
 
-class APIController extends Controller
+class APIController extends AppController
 {
     public $viewClass = 'Json';
 }

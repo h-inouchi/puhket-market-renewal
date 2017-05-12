@@ -908,7 +908,8 @@ app.top.CardManager = okb.EventDispatcher.extend({
 
 		var shareUrl = item["url"];
 
-		var shareUrlHash = "http://www.oscarpro.co.jp/#/"+item["blog"]+"/entry/" + item["id"];
+		//var shareUrlHash = "http://www.puhket-market.com/#/"+item["blog"]+"/entry/" + item["id"];
+		var shareUrlHash = "http://www.puhket-market.com/";
 		var shareText = item["title"];
 
 		//fb
@@ -935,7 +936,7 @@ app.top.CardManager = okb.EventDispatcher.extend({
 
 	_clip:function(id, isClip){
 		var me = this;
-		var ids = $.cookie("oscar_clip") || "";
+		var ids = $.cookie("puhke_clip") || "";
 		var idArr = ids.split(",");
 		var i, len = idArr.length;
 		for (i = 0; i < len; i++) {
@@ -957,7 +958,7 @@ app.top.CardManager = okb.EventDispatcher.extend({
 				if(hitIndex>=0) idArr.splice(hitIndex,1);
 				$clip.removeClass("done");
 			}
-			$.cookie("oscar_clip", idArr.join(","));
+			$.cookie("puhke_clip", idArr.join(","));
 
 			//loading表示
 			$clip.addClass("isClipLoading");
@@ -1155,7 +1156,6 @@ app.top.OnAirManager = okb.EventDispatcher.extend({
 			//block
 			var blockIdx = dataIdx[type];
 			for(var code in blockIdx) {
-
 				//
 				var $block = me.$tpl_block.clone().appendTo($wrap);
 
@@ -1167,10 +1167,10 @@ app.top.OnAirManager = okb.EventDispatcher.extend({
 					var day = Number(code.split("-")[2]);
 					var d = new Date(code.split("-").join("/"));
 					var week = me._translateWeekByNum(d.getDay());
-					hThml = '<img src="http://www.oscarpro.co.jp/assets/imgs/onair/sh-guest-'+week+'.png" />';
+					hThml = '<img src="/assets/imgs/onair/sh-guest-'+week+'.png" />';
 					hThml = '<span>'+ month + "." + day + '</span>' + hThml;
 				} else {
-					hThml = '<img src="http://www.oscarpro.co.jp/assets/imgs/onair/sh-regular-'+code+'.png" />';
+					hThml = '<img src="/assets/imgs/onair/sh-regular-'+code+'.png" />';
 				}
 				$block.find(".h-white").html(hThml);
 

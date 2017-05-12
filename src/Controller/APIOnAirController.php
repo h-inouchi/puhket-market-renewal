@@ -37,20 +37,20 @@ class APIOnAirController extends APIController
             "talent_text" => [""],
             "talent_thum" => ["/img/w60_h57_senzai_syasiin.png"]
         ];
-        $data['hash']['tv'][] = $onair;
-        $data['hash']['tv'][] = $onair;
-        $data['hash']['tv'][] = $onair;
-        $data['hash']['tv'][] = $onair;
-        $data['hash']['tv'][] = $onair;
-        $data['hash']['tv'][] = $onair;
-        $data['hash']['tv'][] = $onair;
-        $data['hash']['tv'][] = $onair;
+        $data['hash']['tv']['mon'][] = $onair;
+        $data['hash']['tv']['tue'][] = $onair;
+        $data['hash']['tv']['wed'][] = $onair;
+        $data['hash']['tv']['thu'][] = $onair;
+        $data['hash']['tv']['fri'][] = $onair;
+        $data['hash']['tv']['sat'][] = $onair;
+        $data['hash']['tv']['sun'][] = $onair;
+        $data['hash']['tv']['2017-05-11'][] = $onair;
 
         $onair['type'] = "Radio";
-        $data['hash']['radio'][] = $onair;
+        $data['hash']['radio']['2017-05-11'][] = $onair;
 
         $onair['type'] = "WEB";
-        $data['hash']['web'][] = $onair;
+        $data['hash']['web']['2017-05-11'][] = $onair;
 
         $this->set('data', $data);
         $this->set('_serialize', ['data']);
