@@ -15,8 +15,8 @@ class __TwigTemplate_dddb91a9a3eee2de0f11b67495f32cbfdb3fbdeefd86073d443d79c7038
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_970cf08e5f1d0be4554ceb98cae95176fc5dc5563cc1120d13aabe5db9a6cefe = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_970cf08e5f1d0be4554ceb98cae95176fc5dc5563cc1120d13aabe5db9a6cefe->enter($__internal_970cf08e5f1d0be4554ceb98cae95176fc5dc5563cc1120d13aabe5db9a6cefe_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig"));
+        $__internal_af357298d8c2f1cd470b4527bf2187ed42707960e01cd652f48fa585e40da5f7 = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
+        $__internal_af357298d8c2f1cd470b4527bf2187ed42707960e01cd652f48fa585e40da5f7->enter($__internal_af357298d8c2f1cd470b4527bf2187ed42707960e01cd652f48fa585e40da5f7_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -808,7 +808,7 @@ class __TwigTemplate_dddb91a9a3eee2de0f11b67495f32cbfdb3fbdeefd86073d443d79c7038
 </html>
 ";
         
-        $__internal_970cf08e5f1d0be4554ceb98cae95176fc5dc5563cc1120d13aabe5db9a6cefe->leave($__internal_970cf08e5f1d0be4554ceb98cae95176fc5dc5563cc1120d13aabe5db9a6cefe_prof);
+        $__internal_af357298d8c2f1cd470b4527bf2187ed42707960e01cd652f48fa585e40da5f7->leave($__internal_af357298d8c2f1cd470b4527bf2187ed42707960e01cd652f48fa585e40da5f7_prof);
 
     }
 
