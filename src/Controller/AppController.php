@@ -89,15 +89,9 @@ class AppController extends Controller
 
     public function beforeFilter(Event $event)
     {
-        $this->Auth->allow(['index', 'view', 'display']);
-
         // ログインが必要かどうかの設定
         // ここでは全許可して、要ログインのものは個別のコントローラで制御
         $this->Auth->allow();
-        $user = $this->Auth->identify();
-        if ($user) {
-            // ユーザ情報をViewで利用可能にしておく
-            $this->set('authUser', $this->Auth->user());
-        }
+        $this->set('authUser', $this->Auth->user());
     }
 }

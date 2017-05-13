@@ -15,12 +15,14 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_b9a41488412865b4266585115229a0a8386dedfb8f72fd09136d4d4ce3cf7770 = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_b9a41488412865b4266585115229a0a8386dedfb8f72fd09136d4d4ce3cf7770->enter($__internal_b9a41488412865b4266585115229a0a8386dedfb8f72fd09136d4d4ce3cf7770_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "/private/var/www/html/puhket-market-renewal/src/Template/Top/index.twig"));
+        $__internal_65726358c263e2f2825127742edc799f7c3bc392715b059ae672abf9af0da162 = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
+        $__internal_65726358c263e2f2825127742edc799f7c3bc392715b059ae672abf9af0da162->enter($__internal_65726358c263e2f2825127742edc799f7c3bc392715b059ae672abf9af0da162_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "/private/var/www/html/puhket-market-renewal/src/Template/Top/index.twig"));
 
         // line 1
         $this->getAttribute((isset($context["_view"]) ? $context["_view"] : null), "assign", array(0 => "title", 1 => "プーケットマーケット"), "method");
         // line 2
+        $context["picUrl"] = "/comedyLiveShows";
+        // line 3
         echo "  <div id=\"fb-root\"></div>
   <div class=\"page page-home\">
     <div class=\"pageInr\">
@@ -32,32 +34,11 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
           <div class=\"gnav\">
             <ul>
               <li class=\"li-news\">
-                <span class=\"out\"><a href=\"/#/news\"><span class=\"ac\"><span class=\"inr\">最新ニュース NEWS</span></span></a></span>
-              </li>
-              <li class=\"li-onair\">
-                <span class=\"out\"><a href=\"/#/onair\"><span class=\"ac\"><span class=\"inr\">TV・RADIO・WEB出演情報 ON AIR</span></span></a></span>
-              </li>
-              <li class=\"li-profile\">
-                <span class=\"out\"><a href=\"/#/profile\"><span class=\"ac\"><span class=\"inr\">プロフィール一覧 PROFILE</span></span></a></span>
+                <span class=\"out\"><a href=\"/posts\"><span class=\"ac\"><span class=\"inr\">最新ニュース NEWS</span></span></a></span>
               </li>
             </ul>
           </div><!-- /gnav -->
           <div class=\"searchArea\">
-            <div class=\"searchBox\">
-              <form action=\"/\">
-                <input type=\"text\" class=\"text\" />
-                <a href=\"#\">Search</a>
-                <input type=\"submit\" class=\"btHiddenSubmit\"/>
-              </form>
-            </div>
-            <div class=\"searchBaloon\">
-              <div class=\"tri\"></div>
-              <div class=\"inr\">
-                <div class=\"block blockNews\"><h5>News</h5><ul></ul></div>
-                <div class=\"block blockProfile\"><h5>Profile</h5><ul></ul></div>
-                <div class=\"block blockBeamie\"><h5>Beamie</h5><ul></ul></div>
-              </div>
-            </div>
           </div><!-- /searchArea -->
 
           <div class=\"spKnob\"></div><!-- /spKnob -->
@@ -70,9 +51,9 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
               <div class=\"area\">
                 <ul class=\"mover\">
                   ";
-        // line 50
-        $this->loadTemplate("../Modules/mover.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Top/index.twig", 50)->display($context);
-        // line 51
+        // line 30
+        $this->loadTemplate("../Modules/mover.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Top/index.twig", 30)->display($context);
+        // line 31
         echo "                </ul>
               </div>
             </div><!-- /imageWrap -->
@@ -80,9 +61,9 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
                 <div class=\"area\">
                     <ul class=\"mover\">
                       ";
-        // line 57
-        $this->loadTemplate("../Modules/mover_thumbs.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Top/index.twig", 57)->display($context);
-        // line 58
+        // line 37
+        $this->loadTemplate("../Modules/mover_thumbs.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Top/index.twig", 37)->display($context);
+        // line 38
         echo "                    </ul>
                 </div>
             </div><!-- /thumWrap -->
@@ -91,7 +72,10 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
         <div class=\"splashArea\" data-entry_id=\"124354\">
           <div class=\"inr\" style=\"margin-top: 0px;\">
             <div class=\"pic\">
-              <a href=\"/\">
+              <a href=";
+        // line 46
+        echo twig_escape_filter($this->env, (isset($context["picUrl"]) ? $context["picUrl"] : null), "html", null, true);
+        echo ">
                 <img src=\"/img/w957_h638_senzai_syasin.jpg\" alt=\"プーケットマーケット\">
               </a>
             </div>
@@ -110,7 +94,10 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
         <div class=\"splashArea\" data-entry_id=\"116502\">
           <div class=\"inr\" style=\"margin-top: 0px;\">
             <div class=\"pic\">
-              <a href=\"/\">
+              <a href=";
+        // line 65
+        echo twig_escape_filter($this->env, (isset($context["picUrl"]) ? $context["picUrl"] : null), "html", null, true);
+        echo ">
                 <img src=\"/img/w957_h638_senzai_syasin.jpg\" alt=\"プーケットマーケット\">
               </a>
             </div>
@@ -394,125 +381,6 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
           </div><!-- /mainArea -->
 
           <div class=\"sideArea\">
-            <div class=\"sideBlock side-cnav\">
-              <!-- NEWS -->
-              <div class=\"catGroup\">
-                <h3 class=\"h h-news knob\"><a href=\"/#/news\"><div><span>News</span></div></a></h3>
-                <div class=\"localMenu\">
-                  <div class=\"localMenuInr\">
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/news/\">All</a></span></li>
-                      <li class=\"li-news-pickup li-odd\"><span><a href=\"/#/news/pickup\">Pick up</a></span></li>
-                      <li class=\"li-news-channel\"><span><a href=\"/#/news/channel\">動画</a></span></li>
-                      <li class=\"li-news-announce li-odd\"><span><a href=\"/#/news/announce\">お知らせ</a></span></li>
-                      <li class=\"li-news-message\"><span><a href=\"/#/news/message\">メッセージ</a></span></li>
-                      <li class=\"li-news-stage li-odd\"><span><a href=\"/#/news/stage\">舞台</a></span></li>
-                      <li class=\"li-news-event\"><span><a href=\"/#/news/event\">イベント・会見</a></span></li>
-                      <li class=\"li-news-cm li-odd\"><span><a href=\"/#/news/cm\">CM</a></span></li>
-                      <li class=\"li-news-magazine\"><span><a href=\"/#/news/magazine\">雑誌</a></span></li>
-                      <li class=\"li-news-music li-odd\"><span><a href=\"/#/news/music\">ミュージック</a></span></li>
-                      <li class=\"li-news-dvd\"><span><a href=\"/#/news/dvd\">DVD</a></span></li>
-                      <li class=\"li-news-movie li-odd\"><span><a href=\"/#/news/movie\">映画</a></span></li>
-                      <li class=\"li-news-tv li-bottom\"><span><a href=\"/#/news/tv\">TV</a></span></li>
-                      <li class=\"li-news-web li-bottom li-odd\"><span><a href=\"/#/news/web\">Web</a></span></li>
-                    </ul>
-                    <div class=\"news-calender\">
-                      <div class=\"btPrev\">
-                        <a href=\"#\">&lt; <span>3</span>月</a>
-                      </div>
-                      <div class=\"btNext\">
-                        <a href=\"#\"><span>5</span>月 &gt;</a>
-                      </div>
-                      <h5 class=\"nowMonth\">4月 2017</h5>
-                      <table>
-                        <tr>
-                          <th>日</th>
-                          <th>月</th>
-                          <th>火</th>
-                          <th>水</th>
-                          <th>木</th>
-                          <th>金</th>
-                          <th>土</th>
-                        </tr>
-                      </table>
-                    </div><!-- /news-calender -->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ON AIR -->
-              <div class=\"catGroup\">
-                <h3 class=\"h h-onair knob\"><a href=\"/#/onair\"><div><span>On Air</span></div></a></h3>
-                <div class=\"localMenu\">
-                  <div class=\"localMenuInr\">
-                    <h4 class=\"lh lh-onair-regular\"><a href=\"/#/onair\">Regular</a></h4>
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/onair/regular\">All</a></span></li>
-                      <li class=\"li-onair-tv li-odd\"><span><a href=\"/#/onair/regular/tv\">TV</a></span></li>
-                      <li class=\"li-onair-radio li-bottom\"><span><a href=\"/#/onair/regular/radio\">Radio</a></span></li>
-                      <li class=\"li-onair-web li-bottom li-odd\"><span><a href=\"/#/onair/regular/web\">Web</a></span></li>
-                    </ul>
-                    <h4 class=\"lh lh-onair-guest\"><a href=\"/#/onair/guest\">Guest</a></h4>
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/onair/guest\">All</a></span></li>
-                      <li class=\"li-onair-tv li-odd\"><span><a href=\"/#/onair/guest/tv\">TV</a></span></li>
-                      <li class=\"li-onair-radio li-bottom\"><span><a href=\"/#/onair/guest/radio\">Radio</a></span></li>
-                      <li class=\"li-onair-web li-bottom li-odd\"><span><a href=\"/#/onair/guest/web\">Web</a></span></li>
-                    </ul>
-                    <h4 class=\"lh lh-onair-today\"><a href=\"/#/onair/today\">本日の出演</a></h4>
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/onair/today\">All</a></span></li>
-                      <li class=\"li-onair-tv li-odd\"><span><a href=\"/#/onair/today/tv\">TV</a></span></li>
-                      <li class=\"li-onair-radio li-bottom\"><span><a href=\"/#/onair/today/radio\">Radio</a></span></li>
-                      <li class=\"li-onair-web li-bottom li-odd\"><span><a href=\"/#/onair/today/web\">Web</a></span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- PROFILE -->
-              <div class=\"catGroup\">
-                <h3 class=\"h h-profile knob\"><a href=\"/#/profile\"><div><span>Profile</span></div></a></h3>
-                <div class=\"localMenu\">
-                  <div class=\"localMenuInr\">
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/profile/\">All</a></span></li>
-                      <li class=\"li-profile-actress li-odd\"><span><a href=\"/#/profile/actress\">女優/タレント</a></span></li>
-                      <li class=\"li-profile-group\"><span><a href=\"/#/profile/group\">グループ</a></span></li>
-                      <li class=\"li-profile-singer li-odd\"><span><a href=\"/#/profile/singer\">歌手</a></span></li>
-                      <li class=\"li-profile-caster li-slim\"><span><a href=\"/#/profile/caster\">キャスター/レポーター</a></span></li>
-                      <li class=\"li-profile-actor li-odd\"><span><a href=\"/#/profile/actor\">男優/タレント</a></span></li>
-                      <li class=\"li-profile-variety\"><span><a href=\"/#/profile/variety\">バラエティ</a></span></li>
-                      <li class=\"li-profile-voiceactress li-odd\"><span><a href=\"/#/profile/voiceactress\">声優</a></span></li>
-                      <li class=\"li-profile-culture li-bottom\"><span><a href=\"/#/profile/culture\">文化事業部</a></span></li>
-                      <li class=\"li-profile-birthday li-bottom li-odd\"><span><a href=\"/#/profile/birthday\">誕生日</a></span></li>
-                    </ul>
-                    <h4 class=\"lh lh-profile-aiueo\"><a href=\"/#/profile/sort/a\">５０音順</a></h4>
-                    <ul class=\"sortNav\">
-                      <li><span><a href=\"/#/profile/sort/a\">あ</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ka\">か</a></span></li>
-                      <li class=\"li-last\"><span><a href=\"/#/profile/sort/sa\">さ</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ta\">た</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/na\">な</a></span></li>
-                      <li class=\"li-last\"><span><a href=\"/#/profile/sort/ha\">は</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ma\">ま</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ya\">や</a></span></li>
-                      <li class=\"li-last\"><span><a href=\"/#/profile/sort/ra\">ら</a></span></li>
-                      <li class=\"li-bottom\"><span><a href=\"/#/profile/sort/wa\">わ</a></span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class=\"spSpacer\"></div>
-
-              <!-- CLIP -->
-              <div class=\"catGroup catGroup-clip\">
-                <h3 class=\"h h-clip\"><a href=\"/#/clip\"><div><span>CLIP</span></div></a></h3>
-              </div>
-
-            </div><!-- /cnav -->
-
             <div class=\"sideBlock side-special\">
               <a href=\"/\">
                 <div class=\"pic\">
@@ -565,7 +433,10 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
             </li>
           </ul>
           <div class=\"txtLinks\">
-              <a href=\"/\">サイトマップ</a>　|　<a href=\"/\">管理メニューログイン</a>
+              <a href=\"/\">サイトマップ</a>　|　";
+        // line 401
+        echo $this->getAttribute((isset($context["Html"]) ? $context["Html"] : null), "link", array(0 => "ログイン", 1 => array("controller" => "users", "action" => "login")), "method");
+        echo "
           </div>
           <div class=\"copyrights\">
             <p>&copy; 2016-<?php echo date('Y');?> puhket-market.com.</p>
@@ -716,7 +587,7 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
   <script type=\"text/javascript\" charset=\"UTF-8\" src=\"/assets/js/top-side.js?_=140612\"></script>
   <script type=\"text/javascript\" charset=\"UTF-8\" src=\"/assets/js/top-news.js?_=140612\"></script>";
         
-        $__internal_b9a41488412865b4266585115229a0a8386dedfb8f72fd09136d4d4ce3cf7770->leave($__internal_b9a41488412865b4266585115229a0a8386dedfb8f72fd09136d4d4ce3cf7770_prof);
+        $__internal_65726358c263e2f2825127742edc799f7c3bc392715b059ae672abf9af0da162->leave($__internal_65726358c263e2f2825127742edc799f7c3bc392715b059ae672abf9af0da162_prof);
 
     }
 
@@ -732,7 +603,7 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
 
     public function getDebugInfo()
     {
-        return array (  86 => 58,  84 => 57,  76 => 51,  74 => 50,  24 => 2,  22 => 1,);
+        return array (  438 => 401,  99 => 65,  77 => 46,  67 => 38,  65 => 37,  57 => 31,  55 => 30,  26 => 3,  24 => 2,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -746,6 +617,7 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
     public function getSourceContext()
     {
         return new Twig_Source("{% do _view.assign('title', 'プーケットマーケット') %}
+{% set picUrl = \"/comedyLiveShows\" %}
   <div id=\"fb-root\"></div>
   <div class=\"page page-home\">
     <div class=\"pageInr\">
@@ -757,32 +629,11 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
           <div class=\"gnav\">
             <ul>
               <li class=\"li-news\">
-                <span class=\"out\"><a href=\"/#/news\"><span class=\"ac\"><span class=\"inr\">最新ニュース NEWS</span></span></a></span>
-              </li>
-              <li class=\"li-onair\">
-                <span class=\"out\"><a href=\"/#/onair\"><span class=\"ac\"><span class=\"inr\">TV・RADIO・WEB出演情報 ON AIR</span></span></a></span>
-              </li>
-              <li class=\"li-profile\">
-                <span class=\"out\"><a href=\"/#/profile\"><span class=\"ac\"><span class=\"inr\">プロフィール一覧 PROFILE</span></span></a></span>
+                <span class=\"out\"><a href=\"/posts\"><span class=\"ac\"><span class=\"inr\">最新ニュース NEWS</span></span></a></span>
               </li>
             </ul>
           </div><!-- /gnav -->
           <div class=\"searchArea\">
-            <div class=\"searchBox\">
-              <form action=\"/\">
-                <input type=\"text\" class=\"text\" />
-                <a href=\"#\">Search</a>
-                <input type=\"submit\" class=\"btHiddenSubmit\"/>
-              </form>
-            </div>
-            <div class=\"searchBaloon\">
-              <div class=\"tri\"></div>
-              <div class=\"inr\">
-                <div class=\"block blockNews\"><h5>News</h5><ul></ul></div>
-                <div class=\"block blockProfile\"><h5>Profile</h5><ul></ul></div>
-                <div class=\"block blockBeamie\"><h5>Beamie</h5><ul></ul></div>
-              </div>
-            </div>
           </div><!-- /searchArea -->
 
           <div class=\"spKnob\"></div><!-- /spKnob -->
@@ -810,7 +661,7 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
         <div class=\"splashArea\" data-entry_id=\"124354\">
           <div class=\"inr\" style=\"margin-top: 0px;\">
             <div class=\"pic\">
-              <a href=\"/\">
+              <a href={{ picUrl }}>
                 <img src=\"/img/w957_h638_senzai_syasin.jpg\" alt=\"プーケットマーケット\">
               </a>
             </div>
@@ -829,7 +680,7 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
         <div class=\"splashArea\" data-entry_id=\"116502\">
           <div class=\"inr\" style=\"margin-top: 0px;\">
             <div class=\"pic\">
-              <a href=\"/\">
+              <a href={{ picUrl }}>
                 <img src=\"/img/w957_h638_senzai_syasin.jpg\" alt=\"プーケットマーケット\">
               </a>
             </div>
@@ -1113,125 +964,6 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
           </div><!-- /mainArea -->
 
           <div class=\"sideArea\">
-            <div class=\"sideBlock side-cnav\">
-              <!-- NEWS -->
-              <div class=\"catGroup\">
-                <h3 class=\"h h-news knob\"><a href=\"/#/news\"><div><span>News</span></div></a></h3>
-                <div class=\"localMenu\">
-                  <div class=\"localMenuInr\">
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/news/\">All</a></span></li>
-                      <li class=\"li-news-pickup li-odd\"><span><a href=\"/#/news/pickup\">Pick up</a></span></li>
-                      <li class=\"li-news-channel\"><span><a href=\"/#/news/channel\">動画</a></span></li>
-                      <li class=\"li-news-announce li-odd\"><span><a href=\"/#/news/announce\">お知らせ</a></span></li>
-                      <li class=\"li-news-message\"><span><a href=\"/#/news/message\">メッセージ</a></span></li>
-                      <li class=\"li-news-stage li-odd\"><span><a href=\"/#/news/stage\">舞台</a></span></li>
-                      <li class=\"li-news-event\"><span><a href=\"/#/news/event\">イベント・会見</a></span></li>
-                      <li class=\"li-news-cm li-odd\"><span><a href=\"/#/news/cm\">CM</a></span></li>
-                      <li class=\"li-news-magazine\"><span><a href=\"/#/news/magazine\">雑誌</a></span></li>
-                      <li class=\"li-news-music li-odd\"><span><a href=\"/#/news/music\">ミュージック</a></span></li>
-                      <li class=\"li-news-dvd\"><span><a href=\"/#/news/dvd\">DVD</a></span></li>
-                      <li class=\"li-news-movie li-odd\"><span><a href=\"/#/news/movie\">映画</a></span></li>
-                      <li class=\"li-news-tv li-bottom\"><span><a href=\"/#/news/tv\">TV</a></span></li>
-                      <li class=\"li-news-web li-bottom li-odd\"><span><a href=\"/#/news/web\">Web</a></span></li>
-                    </ul>
-                    <div class=\"news-calender\">
-                      <div class=\"btPrev\">
-                        <a href=\"#\">&lt; <span>3</span>月</a>
-                      </div>
-                      <div class=\"btNext\">
-                        <a href=\"#\"><span>5</span>月 &gt;</a>
-                      </div>
-                      <h5 class=\"nowMonth\">4月 2017</h5>
-                      <table>
-                        <tr>
-                          <th>日</th>
-                          <th>月</th>
-                          <th>火</th>
-                          <th>水</th>
-                          <th>木</th>
-                          <th>金</th>
-                          <th>土</th>
-                        </tr>
-                      </table>
-                    </div><!-- /news-calender -->
-                  </div>
-                </div>
-              </div>
-
-              <!-- ON AIR -->
-              <div class=\"catGroup\">
-                <h3 class=\"h h-onair knob\"><a href=\"/#/onair\"><div><span>On Air</span></div></a></h3>
-                <div class=\"localMenu\">
-                  <div class=\"localMenuInr\">
-                    <h4 class=\"lh lh-onair-regular\"><a href=\"/#/onair\">Regular</a></h4>
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/onair/regular\">All</a></span></li>
-                      <li class=\"li-onair-tv li-odd\"><span><a href=\"/#/onair/regular/tv\">TV</a></span></li>
-                      <li class=\"li-onair-radio li-bottom\"><span><a href=\"/#/onair/regular/radio\">Radio</a></span></li>
-                      <li class=\"li-onair-web li-bottom li-odd\"><span><a href=\"/#/onair/regular/web\">Web</a></span></li>
-                    </ul>
-                    <h4 class=\"lh lh-onair-guest\"><a href=\"/#/onair/guest\">Guest</a></h4>
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/onair/guest\">All</a></span></li>
-                      <li class=\"li-onair-tv li-odd\"><span><a href=\"/#/onair/guest/tv\">TV</a></span></li>
-                      <li class=\"li-onair-radio li-bottom\"><span><a href=\"/#/onair/guest/radio\">Radio</a></span></li>
-                      <li class=\"li-onair-web li-bottom li-odd\"><span><a href=\"/#/onair/guest/web\">Web</a></span></li>
-                    </ul>
-                    <h4 class=\"lh lh-onair-today\"><a href=\"/#/onair/today\">本日の出演</a></h4>
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/onair/today\">All</a></span></li>
-                      <li class=\"li-onair-tv li-odd\"><span><a href=\"/#/onair/today/tv\">TV</a></span></li>
-                      <li class=\"li-onair-radio li-bottom\"><span><a href=\"/#/onair/today/radio\">Radio</a></span></li>
-                      <li class=\"li-onair-web li-bottom li-odd\"><span><a href=\"/#/onair/today/web\">Web</a></span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <!-- PROFILE -->
-              <div class=\"catGroup\">
-                <h3 class=\"h h-profile knob\"><a href=\"/#/profile\"><div><span>Profile</span></div></a></h3>
-                <div class=\"localMenu\">
-                  <div class=\"localMenuInr\">
-                    <ul>
-                      <li class=\"li-all\"><span><a href=\"/#/profile/\">All</a></span></li>
-                      <li class=\"li-profile-actress li-odd\"><span><a href=\"/#/profile/actress\">女優/タレント</a></span></li>
-                      <li class=\"li-profile-group\"><span><a href=\"/#/profile/group\">グループ</a></span></li>
-                      <li class=\"li-profile-singer li-odd\"><span><a href=\"/#/profile/singer\">歌手</a></span></li>
-                      <li class=\"li-profile-caster li-slim\"><span><a href=\"/#/profile/caster\">キャスター/レポーター</a></span></li>
-                      <li class=\"li-profile-actor li-odd\"><span><a href=\"/#/profile/actor\">男優/タレント</a></span></li>
-                      <li class=\"li-profile-variety\"><span><a href=\"/#/profile/variety\">バラエティ</a></span></li>
-                      <li class=\"li-profile-voiceactress li-odd\"><span><a href=\"/#/profile/voiceactress\">声優</a></span></li>
-                      <li class=\"li-profile-culture li-bottom\"><span><a href=\"/#/profile/culture\">文化事業部</a></span></li>
-                      <li class=\"li-profile-birthday li-bottom li-odd\"><span><a href=\"/#/profile/birthday\">誕生日</a></span></li>
-                    </ul>
-                    <h4 class=\"lh lh-profile-aiueo\"><a href=\"/#/profile/sort/a\">５０音順</a></h4>
-                    <ul class=\"sortNav\">
-                      <li><span><a href=\"/#/profile/sort/a\">あ</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ka\">か</a></span></li>
-                      <li class=\"li-last\"><span><a href=\"/#/profile/sort/sa\">さ</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ta\">た</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/na\">な</a></span></li>
-                      <li class=\"li-last\"><span><a href=\"/#/profile/sort/ha\">は</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ma\">ま</a></span></li>
-                      <li><span><a href=\"/#/profile/sort/ya\">や</a></span></li>
-                      <li class=\"li-last\"><span><a href=\"/#/profile/sort/ra\">ら</a></span></li>
-                      <li class=\"li-bottom\"><span><a href=\"/#/profile/sort/wa\">わ</a></span></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              <div class=\"spSpacer\"></div>
-
-              <!-- CLIP -->
-              <div class=\"catGroup catGroup-clip\">
-                <h3 class=\"h h-clip\"><a href=\"/#/clip\"><div><span>CLIP</span></div></a></h3>
-              </div>
-
-            </div><!-- /cnav -->
-
             <div class=\"sideBlock side-special\">
               <a href=\"/\">
                 <div class=\"pic\">
@@ -1284,7 +1016,7 @@ class __TwigTemplate_3754a3e29a9f1ba09ed5e7d8e07268486577a13a1bb0bc0e1edf8a77656
             </li>
           </ul>
           <div class=\"txtLinks\">
-              <a href=\"/\">サイトマップ</a>　|　<a href=\"/\">管理メニューログイン</a>
+              <a href=\"/\">サイトマップ</a>　|　{{ Html.link('ログイン', {'controller': \"users\", 'action': \"login\"})|raw }}
           </div>
           <div class=\"copyrights\">
             <p>&copy; 2016-<?php echo date('Y');?> puhket-market.com.</p>

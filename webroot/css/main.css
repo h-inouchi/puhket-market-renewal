@@ -57,6 +57,23 @@ h3.band-title {
 	margin: 5px;
 }
 
+.siteLogo {
+	position: absolute;
+	left: 15px;
+}
+.siteLogo a {
+	background: url(/assets/imgs/common/header/head-logo.png) no-repeat left top;
+	display: block;
+	width: 75px;
+	height: 37px;
+	text-indent: -999px;
+	overflow: hidden;
+}
+
+.navbar-nav {
+	padding-left: 60px;
+}
+
 #slider {
 	position: relative;
 	min-height: 160px;
