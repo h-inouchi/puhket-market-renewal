@@ -10,7 +10,7 @@
   utility
  ------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------
-	custom
+  custom
  ------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------
   config
@@ -23,7 +23,7 @@
   utility
  ------------------------------------------------------------------------------------- */
 /* -------------------------------------------------------------------------------------
-	custom
+  custom
  ------------------------------------------------------------------------------------- */
 html {
   color: #000000; }
@@ -762,7 +762,7 @@ img {
     visibility: visible; } }
 /* -------------------------------------------------------------------------------------
 
-	DEVICE
+  DEVICE
 
  ------------------------------------------------------------------------------------- */
 .forSP {
@@ -778,7 +778,7 @@ img {
     display: block; } }
 /* -------------------------------------------------------------------------------------
 
-	LANGUAGE
+  LANGUAGE
 
  ------------------------------------------------------------------------------------- */
 .forEN, .forENimg {
@@ -796,7 +796,7 @@ img {
 
 /* -------------------------------------------------------------------------------------
 
-	パーツ
+  パーツ
 
  ------------------------------------------------------------------------------------- */
 .btHover {
@@ -824,7 +824,7 @@ img {
 
 /* -------------------------------------------------------------------------------------
 
-	HEADER
+  HEADER
 
  ------------------------------------------------------------------------------------- */
 .siteHeader {
@@ -911,7 +911,12 @@ img {
         .siteHeader .headerInr .gnav ul li.li-profile, .siteHeader .headerInr .gnav ul li.li-profile .inr {
           background-image: url(/assets/imgs/common/header/gnav-profile.png);
           width: 110px; }
-
+        .siteHeader .headerInr .gnav ul li.li-fanclub, .siteHeader .headerInr .gnav ul li.li-fanclub .inr {
+          background-image: url(/assets/imgs/common/header/gnav-fanclub.png);
+          width: 107px; }
+        .siteHeader .headerInr .gnav ul li.li-service, .siteHeader .headerInr .gnav ul li.li-service .inr {
+          background-image: url(/assets/imgs/common/header/gnav-service.png);
+          width: 107px; }
         .EN .siteHeader .headerInr .gnav ul li a:hover {
           -webkit-transition: none;
           -moz-transition: none;
@@ -1125,7 +1130,7 @@ img {
       left: 0;
       top: -10px; }
     .siteHeader.christmas .headerInr .siteLogo a {
-      background: url(/assets/imgs/common/header/head-logo.png) no-repeat left top;
+      background: url(/assets/imgs/common/header/head-logo-christmas.png) no-repeat left top;
       display: block;
       width: 136px;
       height: 62px;
@@ -1135,7 +1140,7 @@ img {
       @media screen and (max-width: 979px) {
         .siteHeader.christmas .headerInr .siteLogo a {
           margin: 0 0 0 -5px;
-          background: url(/assets/imgs/common/header/head-logo.png) no-repeat left top;
+          background: url(/assets/imgs/common/header/head-logo-christmas.png) no-repeat left top;
           width: 68px;
           height: 31px;
           background-size: 100%; } }
@@ -1164,7 +1169,7 @@ img {
       left: 0;
       top: -10px; }
     .siteHeader.newyear .headerInr .siteLogo a {
-      background: url(/assets/imgs/common/header/head-logo.png) no-repeat left top;
+      background: url(/assets/imgs/common/header/head-logo-newyear.png) no-repeat left top;
       display: block;
       width: 136px;
       height: 62px;
@@ -1174,7 +1179,7 @@ img {
       @media screen and (max-width: 979px) {
         .siteHeader.newyear .headerInr .siteLogo a {
           margin: -5px 0 0 -5px;
-          background: url(/assets/imgs/common/header/head-logo.png) no-repeat left top;
+          background: url(/assets/imgs/common/header/head-logo-newyear.png) no-repeat left top;
           width: 68px;
           height: 31px;
           background-size: 100%; } }
@@ -1186,7 +1191,7 @@ img {
 
 /* -------------------------------------------------------------------------------------
 
-	CONTENTS
+  CONTENTS
 
  ------------------------------------------------------------------------------------- */
 .contents {
@@ -1336,7 +1341,7 @@ img {
 
 /* -------------------------------------------------------------------------------------
 
-	today
+  today
 
  ------------------------------------------------------------------------------------- */
 .todayCrop {
@@ -1560,7 +1565,7 @@ img {
       font-size: 11px; } }
 /* -------------------------------------------------------------------------------------
 
-	SIDE
+  SIDE
 
  ------------------------------------------------------------------------------------- */
 .sideArea {
@@ -1661,6 +1666,14 @@ img {
     background: url(/assets/imgs/common/side/cnav-h-profile.png) no-repeat 9px center; }
   .side-cnav .h.h-profile span {
     background: url(/assets/imgs/common/side/cnav-h-profile-jp.png) no-repeat 9px center; }
+  .side-cnav .h.h-fanclub div {
+    background: url(/assets/imgs/common/side/cnav-h-fanclub.png) no-repeat 9px center; }
+  .side-cnav .h.h-fanclub span {
+    background: url(/assets/imgs/common/side/cnav-h-fanclub-jp.png) no-repeat 9px center; }
+  .side-cnav .h.h-service div {
+    background: url(/assets/imgs/common/side/cnav-h-service.png) no-repeat 9px center; }
+  .side-cnav .h.h-service span {
+    background: url(/assets/imgs/common/side/cnav-h-service-jp.png) no-repeat 9px center; }
   .side-cnav .h.h-clip a {
     padding-left: 0;
     background: none !important; }
@@ -1807,6 +1820,22 @@ img {
       background-image: url(/assets/imgs/common/side/cnav-profile-culture.png); }
     .side-cnav ul li.li-profile-birthday span a {
       background-image: url(/assets/imgs/common/side/cnav-profile-birthday.png); }
+    .side-cnav ul li.li-fanclub-page span a {
+      background-image: url(/assets/imgs/common/side/cnav-fanclub-page.png); }
+    .side-cnav ul li.li-fanclub-beamie span a {
+      background-image: url(/assets/imgs/common/side/cnav-fanclub-beamie.png); }
+    .side-cnav ul li.li-fanclub-goods span a {
+      background-image: url(/assets/imgs/common/side/cnav-fanclub-goods.png); }
+    .side-cnav ul li.li-fanclub-sp span a {
+      background-image: url(/assets/imgs/common/side/cnav-fanclub-sp.png); }
+    .side-cnav ul li.li-fanclub-others span a {
+      background-image: url(/assets/imgs/common/side/cnav-fanclub-others.png); }
+    .side-cnav ul li.li-service-service span a {
+      background-image: url(/assets/imgs/common/side/cnav-service-service.png); }
+    .side-cnav ul li.li-service-goods span a {
+      background-image: url(/assets/imgs/common/side/cnav-service-goods.png); }
+    .side-cnav ul li.li-service-project span a {
+      background-image: url(/assets/imgs/common/side/cnav-service-project.png); }
   .side-cnav ul.sortNav li.li-last span {
     border-right: none !important; }
   .side-cnav ul.sortNav li span a {
@@ -1947,6 +1976,37 @@ img {
       .side-service ul li a .ex {
         padding-right: 7px; }
 
+.side-contact h3 {
+  padding-bottom: 13px;
+  border-bottom: 1px solid #ececec; }
+.side-contact .desc {
+  padding: 13px 0 14px 10px; }
+.side-contact .bt a {
+  background: url(/assets/imgs/common/side/side-contact-bt.png) no-repeat left top; }
+  .EN .side-contact .bt a {
+    background-image: url(/assets/imgs/common/side/side-contact-bt-en.png); }
+
+.side-fanletter h3 {
+  padding-bottom: 25px; }
+.side-fanletter .bt a {
+  background: url(/assets/imgs/common/side/side-fanletter-bt.png) no-repeat left top; }
+  .EN .side-fanletter .bt a {
+    background-image: url(/assets/imgs/common/side/side-fanletter-bt-en.png); }
+
+.side-recruit h3 {
+  padding-bottom: 25px; }
+.side-recruit .bt a {
+  background: url(/assets/imgs/common/side/side-recruit-bt.png) no-repeat left top; }
+  .EN .side-recruit .bt a {
+    background-image: url(/assets/imgs/common/side/side-recruit-bt-en.png); }
+
+.side-audition h3 {
+  padding-bottom: 25px; }
+.side-audition .bt a {
+  background: url(/assets/imgs/common/side/side-audition-bt.png) no-repeat left top; }
+  .EN .side-audition .bt a {
+    background-image: url(/assets/imgs/common/side/side-audition-bt-en.png); }
+
 @media screen and (max-width: 979px) {
   .page-home .sideArea .side-special {
     display: none !important; }
@@ -2014,10 +2074,42 @@ img {
     .sideArea .side-others {
       float: left;
       margin-right: 7px; }
-
+    .sideArea .side-recruit,
+    .sideArea .side-fanletter,
+    .sideArea .side-audition {
+      margin-right: 0; }
+    .sideArea .side-contact h3 {
+      padding-bottom: 7px;
+      border-bottom: none; }
+    .sideArea .side-contact .desc {
+      padding: 7px 0 9px 0px; }
+    .sideArea .side-contact .bt a {
+      background: url(/assets/imgs/common/side/side-contact-sp-bt.png) no-repeat left top; }
+      .EN .sideArea .side-contact .bt a {
+        background-image: url(/assets/imgs/common/side/side-contact-sp-bt-en.png); }
+    .sideArea .side-fanletter h3,
+    .sideArea .side-recruit h3,
+    .sideArea .side-audition h3 {
+      padding-bottom: 7px; }
+      .EN .sideArea .side-fanletter h3, .EN
+      .sideArea .side-recruit h3, .EN
+      .sideArea .side-audition h3 {
+        padding-bottom: 26px; }
+    .sideArea .side-fanletter .bt a {
+      background: url(/assets/imgs/common/side/side-fanletter-sp-bt.png) no-repeat left top; }
+      .EN .sideArea .side-fanletter .bt a {
+        background-image: url(/assets/imgs/common/side/side-fanletter-sp-bt-en.png); }
+    .sideArea .side-recruit .bt a {
+      background: url(/assets/imgs/common/side/side-recruit-sp-bt.png) no-repeat left top; }
+      .EN .sideArea .side-recruit .bt a {
+        background-image: url(/assets/imgs/common/side/side-recruit-sp-bt-en.png); }
+    .sideArea .side-audition .bt a {
+      background: url(/assets/imgs/common/side/side-audition-sp-bt.png) no-repeat left top; }
+      .EN .sideArea .side-audition .bt a {
+        background-image: url(/assets/imgs/common/side/side-audition-sp-bt-en.png); } }
 /* -------------------------------------------------------------------------------------
 
-	SP MENU
+  SP MENU
 
  ------------------------------------------------------------------------------------- */
 .hiddenSpMenuClose {
@@ -2108,6 +2200,18 @@ img {
       .spMenu .side-cnav .h.h-profile span {
         background: url(/assets/imgs/common/side_sp/cnav-h-profile-jp.png) no-repeat 9px center;
         background-size: 123px auto; }
+      .spMenu .side-cnav .h.h-fanclub div {
+        background: url(/assets/imgs/common/side_sp/cnav-h-fanclub.png) no-repeat 9px center;
+        background-size: 82px auto; }
+      .spMenu .side-cnav .h.h-fanclub span {
+        background: url(/assets/imgs/common/side_sp/cnav-h-fanclub-jp.png) no-repeat 9px center;
+        background-size: 187px auto; }
+      .spMenu .side-cnav .h.h-service div {
+        background: url(/assets/imgs/common/side_sp/cnav-h-service.png) no-repeat 9px center;
+        background-size: 77px auto; }
+      .spMenu .side-cnav .h.h-service span {
+        background: url(/assets/imgs/common/side_sp/cnav-h-service-jp.png) no-repeat 9px center;
+        background-size: 137px auto; }
       .spMenu .side-cnav .h.h-clip a {
         padding-left: 0;
         background: none !important; }
@@ -2268,6 +2372,30 @@ img {
         .spMenu .side-cnav ul li.li-profile-birthday span a {
           background-image: url(/assets/imgs/common/side_sp/cnav-profile-birthday.png);
           background-size: 30px auto; }
+        .spMenu .side-cnav ul li.li-fanclub-page span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-fanclub-page.png);
+          background-size: 30px auto; }
+        .spMenu .side-cnav ul li.li-fanclub-beamie span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-fanclub-beamie.png);
+          background-size: 20px auto; }
+        .spMenu .side-cnav ul li.li-fanclub-goods span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-fanclub-goods.png);
+          background-size: 33px auto; }
+        .spMenu .side-cnav ul li.li-fanclub-sp span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-fanclub-sp.png);
+          background-size: 23px auto; }
+        .spMenu .side-cnav ul li.li-fanclub-others span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-fanclub-others.png);
+          background-size: 28px auto; }
+        .spMenu .side-cnav ul li.li-service-service span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-service-service.png);
+          background-size: 49px auto; }
+        .spMenu .side-cnav ul li.li-service-goods span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-service-goods.png);
+          background-size: 33px auto; }
+        .spMenu .side-cnav ul li.li-service-project span a {
+          background-image: url(/assets/imgs/common/side_sp/cnav-service-project.png);
+          background-size: 27px auto; }
       .spMenu .side-cnav ul.sortNav li.li-last span {
         border-right: none !important; }
       .spMenu .side-cnav ul.sortNav li span a {
@@ -2327,7 +2455,7 @@ img {
 
 /* -------------------------------------------------------------------------------------
 
-	FOOTER
+  FOOTER
 
  ------------------------------------------------------------------------------------- */
 .siteFooter {
@@ -2444,7 +2572,7 @@ img {
 
 /* -------------------------------------------------------------------------------------
 
-	その他ページ
+  その他ページ
 
  ------------------------------------------------------------------------------------- */
 .page-others .clear {
@@ -3101,7 +3229,29 @@ img {
             .page-home .cardArea .cardList .card.channel.noPic .icon_channel span {
               background-image: url(/assets/imgs/news/card-icon-movie-sp.png);
               background-size: 30px auto; } }
-
+      .page-home .cardArea .cardList .card.card-beamie .icon_beamie {
+        position: relative; }
+        .page-home .cardArea .cardList .card.card-beamie .icon_beamie span {
+          position: absolute;
+          right: 10px;
+          bottom: 7px;
+          background: url(/assets/imgs/news/card-icon-beamie.png) no-repeat left top;
+          display: block;
+          width: 76px;
+          height: 23px;
+          text-indent: -999px;
+          overflow: hidden; }
+          .ie678 .page-home .cardArea .cardList .card.card-beamie .icon_beamie span {
+            overflow: visible;
+            text-indent: -9999px; }
+          @media screen and (max-width: 759px) {
+            .page-home .cardArea .cardList .card.card-beamie .icon_beamie span {
+              right: 7px;
+              bottom: 7px;
+              width: 56px;
+              height: 16px;
+              background-image: url(/assets/imgs/news/card-icon-beamie-sp.png);
+              background-size: 56px auto; } }
       .page-home .cardArea .cardList .card.card-beamie.noPic .icon_beamie {
         position: relative;
         padding-left: 5px;
@@ -3168,7 +3318,51 @@ img {
                 width: 100%; }
                 .page-home .cardArea .cardList .card.detail.portrait .p img {
                   width: 100%; } }
-
+      .page-home .cardArea .cardList .card.card-contact .cardInr, .page-home .cardArea .cardList .card.card-fanletter .cardInr {
+        min-height: 299px; }
+      .page-home .cardArea .cardList .card.card-contact .contactUpper, .page-home .cardArea .cardList .card.card-fanletter .contactUpper {
+        height: 86px;
+        background: url(/assets/imgs/news/card-contact-bg.png) repeat-x left top;
+        padding: 0 0 0 10px; }
+        .page-home .cardArea .cardList .card.card-contact .contactUpper h4, .page-home .cardArea .cardList .card.card-fanletter .contactUpper h4 {
+          padding: 13px 0 10px 0; }
+        .page-home .cardArea .cardList .card.card-contact .contactUpper p, .page-home .cardArea .cardList .card.card-fanletter .contactUpper p {
+          color: #fff;
+          font-size: 11px; }
+      .page-home .cardArea .cardList .card.card-contact .contactDowner, .page-home .cardArea .cardList .card.card-fanletter .contactDowner {
+        padding: 12px 10px; }
+        .page-home .cardArea .cardList .card.card-contact .contactDowner p, .page-home .cardArea .cardList .card.card-fanletter .contactDowner p {
+          padding-bottom: 14px; }
+      .page-home .cardArea .cardList .card.card-contact .bt a {
+        background: url(/assets/imgs/common/side/side-contact-bt.png) no-repeat left top;
+        display: block;
+        width: 163px;
+        height: 24px;
+        text-indent: -999px;
+        overflow: hidden; }
+        .EN .page-home .cardArea .cardList .card.card-contact .bt a {
+          background-image: url(/assets/imgs/common/side/side-contact-bt-en.png); }
+        .ie678 .page-home .cardArea .cardList .card.card-contact .bt a {
+          overflow: visible;
+          text-indent: -9999px; }
+        .page-home .cardArea .cardList .card.card-contact .bt a:hover {
+          background-position: left bottom; }
+      .page-home .cardArea .cardList .card.card-fanletter .cardInr {
+        min-height: 200px; }
+      .page-home .cardArea .cardList .card.card-fanletter .bt a {
+        background: url(/assets/imgs/common/side/side-fanletter-bt.png) no-repeat left top;
+        display: block;
+        width: 163px;
+        height: 24px;
+        text-indent: -999px;
+        overflow: hidden; }
+        .EN .page-home .cardArea .cardList .card.card-fanletter .bt a {
+          background-image: url(/assets/imgs/common/side/side-fanletter-bt-en.png); }
+        .ie678 .page-home .cardArea .cardList .card.card-fanletter .bt a {
+          overflow: visible;
+          text-indent: -9999px; }
+        .page-home .cardArea .cardList .card.card-fanletter .bt a:hover {
+          background-position: left bottom; }
       .page-home .cardArea .cardList .card.card-profile.summary {
         height: 260px; }
         .page-home .cardArea .cardList .card.card-profile.summary .pic {
@@ -3441,8 +3635,36 @@ img {
         padding: 6px 5px; }
         .page-home .cardArea .cardList .card.card-contact .contactDowner p, .page-home .cardArea .cardList .card.card-fanletter .contactDowner p {
           padding-bottom: 9px; }
+      .page-home .cardArea .cardList .card.card-contact .bt a {
+        background: url(/assets/imgs/common/side/side-contact-sp-bt.png) no-repeat left top;
+        background-position: left top !important;
+        background-size: 100% auto;
+        display: block;
+        width: 139px;
+        height: 19px;
+        text-indent: -999px;
+        overflow: hidden; }
+        .EN .page-home .cardArea .cardList .card.card-contact .bt a {
+          background-image: url(/assets/imgs/common/side/side-contact-sp-bt-en.png); }
+        .ie678 .page-home .cardArea .cardList .card.card-contact .bt a {
+          overflow: visible;
+          text-indent: -9999px; }
       .page-home .cardArea .cardList .card.card-fanletter .cardInr {
         min-height: 142px; }
+      .page-home .cardArea .cardList .card.card-fanletter .bt a {
+        background: url(/assets/imgs/common/side/side-fanletter-sp-bt.png) no-repeat left top;
+        background-position: left top !important;
+        background-size: 100% auto;
+        display: block;
+        width: 139px;
+        height: 19px;
+        text-indent: -999px;
+        overflow: hidden; }
+        .EN .page-home .cardArea .cardList .card.card-fanletter .bt a {
+          background-image: url(/assets/imgs/common/side/side-fanletter-sp-bt-en.png); }
+        .ie678 .page-home .cardArea .cardList .card.card-fanletter .bt a {
+          overflow: visible;
+          text-indent: -9999px; }
       .page-home .cardArea .cardList .card.card-profile.summary {
         height: 215px; }
         .page-home .cardArea .cardList .card.card-profile.summary .pic {

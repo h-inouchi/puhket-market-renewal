@@ -85,10 +85,6 @@ app.top.News = okb.EventDispatcher.extend({
 			}
 		}
 
-
-		/* GA */
-		_news.trackPage();
-
 	},
 
 	scrollToContent:function(time){
@@ -151,19 +147,6 @@ app.top.News = okb.EventDispatcher.extend({
 		}, delay||0);
 	},
 
-	/* GA */
-	trackPage:function(addPage, forceEntry, forceCat){
-		var me = this;
-		var hash = location.hash || "";
-		if(hash.indexOf("#/")<0) hash = "#/";
-		var page = "/" + hash.split("#/").slice(1).join("/");
-		if(addPage) page += addPage;
-		if(forceEntry) page = "/" + forceCat + "/entry/"+forceEntry;
-		page += "/";
-		page = page.split("//").join(("/"));
-		GA.trackPage(page);
-	}
-
 });
 
 
@@ -220,29 +203,9 @@ app.top.CardManager = okb.EventDispatcher.extend({
 				me._close();
 			}
 
-			//お問い合わせGA
-			if($btn.hasClass("btInquiry")){
-				_news.trackPage("/contact");
-			}
-
-			//ファンレターGA
-			if($btn.hasClass("btFanletter")){
-				_news.trackPage("/fanletter");
-			}
-
-			//外部リンクGA
-			if($btn.hasClass("btCardDirect")){
-				var id = $btn.attr("data-id");
-				var cat = $btn.attr("data-cat");
-				_news.trackPage(null, id, cat);
-			}
-
 			//MY CLIP
 			if($btn.hasClass("btClip")){
 				e.preventDefault();
-
-				/* GA (なぜかこの前に1行でも処理が追加されるとGAが送信されなくなる・・) */
-				GA.trackEvent('clip', ($btn.hasClass("before")? 'add': 'remove'), $btn.parent().attr("data-id") );
 
 				var id = $btn.parent().attr("data-id");
 				if($btn.hasClass("before")) me._clip(id, true);
@@ -252,9 +215,6 @@ app.top.CardManager = okb.EventDispatcher.extend({
 			//PRINT
 			if($btn.hasClass("btPrint")){
 				e.preventDefault();
-
-				/* GA */
-				GA.trackEvent('print', 'click', $btn.attr("data-id") );
 
 				window.print();
 			}

@@ -1,10 +1,17 @@
-<div class="users form">
+<nav class="large-3 medium-4 columns" id="actions-sidebar">
+    <ul class="side-nav">
+        <li class="heading"><?= __('Actions') ?></li>
+        <li>{{ Html.link(__('List Users'), {'action' : 'index'})|raw }}</li>
+    </ul>
+</nav>
+<div class="users form large-9 medium-8 columns content">
 {{ Form.create(user)|raw }}
     <fieldset>
         <legend><?= __('Add User') ?></legend>
     	{{ Form.control('username')|raw }}
     	{{ Form.control('password')|raw }}
     	{{ Form.control('role', {'options': {'admin': 'Admin', 'author': 'Author'}})|raw }}
+      {{ Form.control('unit_name')|raw }}
    </fieldset>
 {{ Form.button(__('Submit'))|raw }}
 {{ Form.end|raw }}

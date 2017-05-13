@@ -37,16 +37,6 @@ app.Conf = {
 			"path": "/-dammy-api/profile.json",
 			"method":"get"
 		},
-		"fanclub": {
-			"path_pro": "/api/fanclub/",
-			"path": "/-dammy-api/fanclub.json",
-			"method":"get"
-		},
-		"service": {
-			"path_pro": "/api/service/",
-			"path": "/-dammy-api/service.json",
-			"method":"get"
-		},
 		"onair": {
 			"path_pro": "/api/onair/",
 //			"path_pro": "/-dammy-api/onair.json",

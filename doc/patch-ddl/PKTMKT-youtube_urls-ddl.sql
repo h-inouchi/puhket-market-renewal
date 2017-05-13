@@ -1,0 +1,1 @@
+alter table youtube_urls add youtube_category int after url;

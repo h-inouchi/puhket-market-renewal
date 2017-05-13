@@ -1,0 +1,4 @@
+su
+
+[root@ik1-300-10187 puhket_market_dump]#
+sudo mysqldump -u root -p puhket_market places live_show_titles comedy_live_shows ikuyo_comments users unit_members posts images personal_schedules blog_posts youtube_urls inning_high_scores > /var/local/puhket_market_dump/dump.sql

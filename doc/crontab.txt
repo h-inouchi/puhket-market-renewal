@@ -1,0 +1,4 @@
+sudo vi /etc/crontab
+
+#以下の記述を追加 5分おきに実行
+*/5  *    *    *    *  root cd /var/www/html/puhket-market/app && Console/cake mail_ikuyo_list

@@ -1,0 +1,111 @@
+<header>
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="/"class="navbar-brand">プーケットマーケット</a>
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar-main">
+        <ul class="nav navbar-nav">
+          <li>
+            {{ Html.link('トップへ', {'controller': "comedy_live_shows", 'action': "index"}, {'style': "background:#b6b5b5; color:white;"})|raw }}
+          </li>
+          <li>
+            {{ Html.link('ニュース', {'controller': "posts", 'action': "index"}, {'style': "background:#e3477e; color:white;"})|raw }}
+            <span class="text-icon">NEW</span>'
+          </li>
+          <li>
+            {{ Html.link('写真', {'controller': "images", 'action': "index"}, {'style': "background:#56a13e; color:white;"})|raw }}
+          </li>
+          <li>
+            {{ Html.link('動画', {'controller': "youtube_urls", 'action': "index"}, {'style': "background:#f29950; color:white;"})|raw }}
+          </li>
+          <li>
+            {{ Html.link('リンク', {'controller': "youtube_urls", 'action': "link"}, {'style': "background:#3d9ec7; color:white;"})|raw }}
+          </li>
+          <li>
+            {{ Html.link('ブログ', {'controller': "blog_posts", 'action': "index"}, {'style': "background:#b85f9a; color:white;"})|raw }}
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="background:white; color:blue; font-size:14px;">ゲーム<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                {{ Html.link('KENKEN 都道府県じゃんけん', {'controller': "todouhukens", 'action': "index"}, {'style': "background:#b6b5b5; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('KENKEN 都道府県じゃんけん　ハイスコア', {'controller': "inning_high_scores", 'action': "index", 'gameName': "todouhuken"}, {'style': "background:#b6b5b5; color:white; float:right; font-size:12px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('逆ボーリング', {'controller': "tepmas", 'action': "gyaku_bowling"}, {'style': "background:#e3477e; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('逆ビリヤード', {'controller': "tepmas", 'action': "gyaku_bill"}, {'style': "background:#e3477e; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('無限テプマス', {'controller': "tepmas", 'action': "index"}, {'style': "background:#3d9ec7; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('やかましテプマス', {'controller': "tepmas", 'action': "honda"}, {'style': "background:#3d9ec7; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('腹立つテプマス', {'controller': "tepmas", 'action': "haratatsu"}, {'style': "background:#3d9ec7; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('激ムズテプマス', {'controller': "tepmas", 'action': "gekimuzu"}, {'style': "background:#3d9ec7; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('野球ゲーム　打席', {'controller': "batter_boxes", 'action': "edit"}, {'style': "background:#56a13e; color:white;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('野球ゲーム　ハイスコア', {'controller': "inning_high_scores", 'action': "index", 'gameName': "baseball"}, {'style': "background:#56a13e; color:white; float:right; font-size:12px;"})|raw }}
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+{% if authUser %}
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">管理メニュー<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li>
+                {{ Html.link('logout', {'controller': "users", 'action': "logout"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('予約', {'controller': "ikuyo_comments", 'action': "index"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('場所', {'controller': "places", 'action': "index"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('ライブ', {'controller': "live_show_titles", 'action': "index"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('ニュース', {'controller': "posts", 'action': "adminIndex"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('写真追加', {'controller': "images", 'action': "add"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('動画', {'controller': "youtube_urls", 'action': "adminIndex"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('ブログ', {'controller': "blog_posts", 'action': "adminIndex"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('個人予定一覧', {'controller': "personal_schedules", 'action': "index"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+              <li>
+                {{ Html.link('出演予定', {'controller': "comedy_live_shows", 'action': "adminIndex"}, {'style': "float:right; margin-left:7px; font-size:14px;"})|raw }}
+              </li>
+            </ul>
+{% else %}
+            {{ Html.link('芸人ログイン', {'controller': "users", 'action': "login"}, {'style': "float:right; margin-left:108px;  font-size:12px;"})|raw }}
+{% endif %}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
