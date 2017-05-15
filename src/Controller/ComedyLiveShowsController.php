@@ -2,7 +2,7 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-use App\Model\Users;
+use Cake\Event\Event;
 use Cake\Utility\Hash;
 use Cake\ORM\TableRegistry;
 /**
@@ -15,13 +15,23 @@ class ComedyLiveShowsController extends AppController
 	public $components = [
 		'ScheduleManager',
 	];
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    public function index()
-    {
+
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+		$this->Auth->deny([
+			'adminIndex',
+			'add',
+			'delete',
+			'edit',
+		]);
+	}
+	/**
+	 * Index method
+	 *
+	 * @return \Cake\Network\Response|null
+	 */
+	public function index()
+	{
 		// 日付の指定がある場合
 		$date = Hash::get($this->request->query, 'date');
 		$userId = Hash::get($this->request->query, 'userId');
@@ -57,7 +67,6 @@ class ComedyLiveShowsController extends AppController
 		$this->set('comedy_live_shows', $comedy_live_shows);
 
 		$users = TableRegistry::get('Users');
-
 		//unit_nameはライブ出演予定なくても取得するから別途select する
 		$query = $users->find('all',
 			[
@@ -89,22 +98,22 @@ class ComedyLiveShowsController extends AppController
 		/////// mover ////////////
 		$mover =
 		 [
-            "url" => "/",
-            "image" => "/img/w784_h297_senzai_syasin.jpg",
-        ];
+			"url" => "/",
+			"image" => "/img/w784_h297_senzai_syasin.jpg",
+		];
 
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
-        $movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
+		$movers[] = $mover;
 
 		$this->set([
 			'movers' => $movers,
@@ -113,94 +122,136 @@ class ComedyLiveShowsController extends AppController
 			'national_holiday' => $national_holiday,
 			'schedule_dates' => $schedule_dates,
 		]);
-    }
+	}
+	/**
+	 * adminIndex method
+	 *
+	 * @return \Cake\Network\Response|null
+	 */
+	public function adminIndex() {
+		$userId = $this->Auth->user('id');
+		$comedy_live_shows = $this->ComedyLiveShows->find('all',
+			[
+				'contain' => ['LiveShowTitles', 'Places', 'Users'],
+				'order' => [
+					'live_show_date' => 'desc',
+					'start' => 'desc',
+				],
+				'conditions' => [
+					'live_show_date >=' => date('Y/m/d'),
+					'ComedyLiveShows.user_id' => $this->Auth->user('id'),
+				],
+			]
+		);
+		$mod_comedy_live_shows = [];
+		$weekday = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)'];
+		foreach ($comedy_live_shows as $comedy_live_show) {
+			$week = $weekday[date('w', strtotime($comedy_live_show['live_show_date']))];
+			$comedy_live_show['live_show_date'] =
+				date('Y/m/d ', strtotime( $comedy_live_show['live_show_date'] ) ) . $week;
+			array_push($mod_comedy_live_shows, $comedy_live_show);
+		}
+		$this->set('comedy_live_shows', $mod_comedy_live_shows);
+		$users = TableRegistry::get('Users');
+		//unit_nameはライブ出演予定なくても取得するから別途select する
+		$query = $users->find('all',
+			[
+				'conditions' => [
+					'id' => $userId,
+				],
+			]
+		);
+		$user = $query->first();
+		$this->set('user', $user);
+		$this->set('title_for_layout', '管理者用 ライブ一覧');
+	}
 
-    /**
-     * View method
-     *
-     * @param string|null $id Comedy Live Show id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $comedyLiveShow = $this->ComedyLiveShows->get($id, [
-            'contain' => ['LiveShowTitles', 'Places', 'Users', 'IkuyoComments']
-        ]);
+	/**
+	 * View method
+	 *
+	 * @param string|null $id Comedy Live Show id.
+	 * @return \Cake\Network\Response|null
+	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+	 */
+	public function view($id = null)
+	{
+		$comedyLiveShow = $this->ComedyLiveShows->get($id, [
+			'contain' => ['LiveShowTitles', 'Places', 'Users', 'IkuyoComments']
+		]);
 
-        $this->set('comedyLiveShow', $comedyLiveShow);
-        $this->set('_serialize', ['comedyLiveShow']);
-    }
+		$this->set('comedyLiveShow', $comedyLiveShow);
+		$this->set('_serialize', ['comedyLiveShow']);
+	}
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $comedyLiveShow = $this->ComedyLiveShows->newEntity();
-        if ($this->request->is('post')) {
-            $comedyLiveShow = $this->ComedyLiveShows->patchEntity($comedyLiveShow, $this->request->getData());
-            if ($this->ComedyLiveShows->save($comedyLiveShow)) {
-                $this->Flash->success(__('The comedy live show has been saved.'));
+	/**
+	 * Add method
+	 *
+	 * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
+	 */
+	public function add()
+	{
+		$comedyLiveShow = $this->ComedyLiveShows->newEntity();
+		if ($this->request->is('post')) {
+			$comedyLiveShow = $this->ComedyLiveShows->patchEntity($comedyLiveShow, $this->request->getData());
+			if ($this->ComedyLiveShows->save($comedyLiveShow)) {
+				$this->Flash->success(__('The comedy live show has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The comedy live show could not be saved. Please, try again.'));
-        }
-        $liveShowTitles = $this->ComedyLiveShows->LiveShowTitles->find('list', ['limit' => 200]);
-        $places = $this->ComedyLiveShows->Places->find('list', ['limit' => 200]);
-        $users = $this->ComedyLiveShows->Users->find('list', ['limit' => 200]);
-        $this->set(compact('comedyLiveShow', 'liveShowTitles', 'places', 'users'));
-        $this->set('_serialize', ['comedyLiveShow']);
-    }
+				return $this->redirect(['action' => 'index']);
+			}
+			$this->Flash->error(__('The comedy live show could not be saved. Please, try again.'));
+		}
+		$liveShowTitles = $this->ComedyLiveShows->LiveShowTitles->find('list', ['limit' => 200]);
+		$places = $this->ComedyLiveShows->Places->find('list', ['limit' => 200]);
+		$users = $this->ComedyLiveShows->Users->find('list', ['limit' => 200]);
+		$this->set(compact('comedyLiveShow', 'liveShowTitles', 'places', 'users'));
+		$this->set('_serialize', ['comedyLiveShow']);
+	}
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Comedy Live Show id.
-     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $comedyLiveShow = $this->ComedyLiveShows->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $comedyLiveShow = $this->ComedyLiveShows->patchEntity($comedyLiveShow, $this->request->getData());
-            if ($this->ComedyLiveShows->save($comedyLiveShow)) {
-                $this->Flash->success(__('The comedy live show has been saved.'));
+	/**
+	 * Edit method
+	 *
+	 * @param string|null $id Comedy Live Show id.
+	 * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
+	 * @throws \Cake\Network\Exception\NotFoundException When record not found.
+	 */
+	public function edit($id = null)
+	{
+		$comedyLiveShow = $this->ComedyLiveShows->get($id, [
+			'contain' => []
+		]);
+		if ($this->request->is(['patch', 'post', 'put'])) {
+			$comedyLiveShow = $this->ComedyLiveShows->patchEntity($comedyLiveShow, $this->request->getData());
+			if ($this->ComedyLiveShows->save($comedyLiveShow)) {
+				$this->Flash->success(__('The comedy live show has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The comedy live show could not be saved. Please, try again.'));
-        }
-        $liveShowTitles = $this->ComedyLiveShows->LiveShowTitles->find('list', ['limit' => 200]);
-        $places = $this->ComedyLiveShows->Places->find('list', ['limit' => 200]);
-        $users = $this->ComedyLiveShows->Users->find('list', ['limit' => 200]);
-        $this->set(compact('comedyLiveShow', 'liveShowTitles', 'places', 'users'));
-        $this->set('_serialize', ['comedyLiveShow']);
-    }
+				return $this->redirect(['action' => 'index']);
+			}
+			$this->Flash->error(__('The comedy live show could not be saved. Please, try again.'));
+		}
+		$liveShowTitles = $this->ComedyLiveShows->LiveShowTitles->find('list', ['limit' => 200]);
+		$places = $this->ComedyLiveShows->Places->find('list', ['limit' => 200]);
+		$users = $this->ComedyLiveShows->Users->find('list', ['limit' => 200]);
+		$this->set(compact('comedyLiveShow', 'liveShowTitles', 'places', 'users'));
+		$this->set('_serialize', ['comedyLiveShow']);
+	}
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Comedy Live Show id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $comedyLiveShow = $this->ComedyLiveShows->get($id);
-        if ($this->ComedyLiveShows->delete($comedyLiveShow)) {
-            $this->Flash->success(__('The comedy live show has been deleted.'));
-        } else {
-            $this->Flash->error(__('The comedy live show could not be deleted. Please, try again.'));
-        }
+	/**
+	 * Delete method
+	 *
+	 * @param string|null $id Comedy Live Show id.
+	 * @return \Cake\Network\Response|null Redirects to index.
+	 * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+	 */
+	public function delete($id = null)
+	{
+		$this->request->allowMethod(['post', 'delete']);
+		$comedyLiveShow = $this->ComedyLiveShows->get($id);
+		if ($this->ComedyLiveShows->delete($comedyLiveShow)) {
+			$this->Flash->success(__('The comedy live show has been deleted.'));
+		} else {
+			$this->Flash->error(__('The comedy live show could not be deleted. Please, try again.'));
+		}
 
-        return $this->redirect(['action' => 'index']);
-    }
+		return $this->redirect(['action' => 'index']);
+	}
 }

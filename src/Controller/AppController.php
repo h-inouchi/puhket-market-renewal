@@ -17,7 +17,7 @@ namespace App\Controller;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Routing\Router;
-
+use Cake\Utility\Text;
 /**
  * Application Controller
  *
@@ -28,70 +28,99 @@ use Cake\Routing\Router;
  */
 class AppController extends Controller
 {
-    public $viewClass = '\WyriHaximus\TwigView\View\TwigView';
-    public $helpers = ['Html', 'Form'];
-    /**
-     * Initialization hook method.
-     *
-     * Use this method to add common initialization code like loading components.
-     *
-     * e.g. `$this->loadComponent('Security');`
-     *
-     * @return void
-     */
-    public function initialize()
-    {
-        parent::initialize();
+	public $viewClass = '\WyriHaximus\TwigView\View\TwigView';
+	public $helpers = ['Html', 'Form'];
+	/**
+	 * Initialization hook method.
+	 *
+	 * Use this method to add common initialization code like loading components.
+	 *
+	 * e.g. `$this->loadComponent('Security');`
+	 *
+	 * @return void
+	 */
+	public function initialize()
+	{
+		parent::initialize();
 
-        $this->loadComponent('RequestHandler');
-        $this->loadComponent('Flash');
+		$this->loadComponent('RequestHandler');
+		$this->loadComponent('Flash');
+		$this->loadComponent('Auth', [
+			'loginRedirect' =>[],
+			'logoutRedirect' => [
+				'controller' => 'Users',
+				'action' => 'login'
+			],
+			'authorize' => ['Controller'],
+			'unauthorizedRedirect' => [
+				'controller' => 'users',
+				'action' => 'login'
+			],
+		]);
+		$this->loadComponent('Cookie', [
+			'expires' => '1 day'
+		]);
+		$uuid = $this->Cookie->read('pktmkt_uuid');
+		if (strlen($uuid) == 0) {
+			$uuid = Text::uuid();
+			$oneMonth = 86400 * 31;
+			$this->Cookie->write('pktmkt_uuid', $uuid, false, $oneMonth);
+		}
+		/*
+		 * Enable the following components for recommended CakePHP security settings.
+		 * see http://book.cakephp.org/3.0/en/controllers/components/security.html
+		 */
+		$this->loadComponent('Security');
+		$this->loadComponent('Csrf');
+	}
 
-        $this->loadComponent('Auth', [
-            'loginRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'display'
-            ],
-            'logoutRedirect' => [
-                'controller' => 'Pages',
-                'action' => 'display',
-                'home'
-            ]
-        ]);
+	/**
+	 * Before render callback.
+	 *
+	 * @param \Cake\Event\Event $event The beforeRender event.
+	 * @return \Cake\Network\Response|null|void
+	 */
+	public function beforeRender(Event $event)
+	{		
+		if (!array_key_exists('_serialize', $this->viewVars) &&
+			in_array($this->response->type(), ['application/json', 'application/xml'])
+		) {
+			$this->set('_serialize', true);
+		}
 
-        /*
-         * Enable the following components for recommended CakePHP security settings.
-         * see http://book.cakephp.org/3.0/en/controllers/components/security.html
-         */
-        //$this->loadComponent('Security');
-        //$this->loadComponent('Csrf');
-    }
+		$this->set([
+			'controllerName' => $this->name,
+			'actionNmame' => $this->request->action,
+			'ogImageUrl' => Router::url('/img/og/senzai_syasin.jpg', true),
+		]);
+	}
 
-    /**
-     * Before render callback.
-     *
-     * @param \Cake\Event\Event $event The beforeRender event.
-     * @return \Cake\Network\Response|null|void
-     */
-    public function beforeRender(Event $event)
-    {
-        if (!array_key_exists('_serialize', $this->viewVars) &&
-            in_array($this->response->type(), ['application/json', 'application/xml'])
-        ) {
-            $this->set('_serialize', true);
-        }
+	public function beforeFilter(Event $event)
+	{
+		// ログインが必要かどうかの設定
+		// ここでは全許可して、要ログインのものは個別のコントローラで制御
+		$this->Auth->allow();
+		$this->set('authUser', $this->Auth->user());
+	}
 
-        $this->set([
-            'controllerName' => $this->name,
-            'actionNmame' => $this->request->action,
-            'ogImageUrl' => Router::url('/img/og/senzai_syasin.jpg', true),
-        ]);
-    }
-
-    public function beforeFilter(Event $event)
-    {
-        // ログインが必要かどうかの設定
-        // ここでは全許可して、要ログインのものは個別のコントローラで制御
-        $this->Auth->allow();
-        $this->set('authUser', $this->Auth->user());
-    }
+	public function isAuthorized($user) {
+		// Admin can access every action
+		if (isset($user['role']) && $user['role'] === 'admin') {
+			return true;
+		}
+		// author
+		if (isset($user['role']) && $user['role'] === 'author') {
+			if ($this->request->controller == 'blog_posts') {
+				return true;
+			}
+		}
+		// oogiri
+		if (isset($user['role']) && $user['role'] === 'oogiri') {
+			if ($this->request->controller == 'oogiri_scores') {
+				return true;
+			}
+		}
+		// デフォルトは拒否
+		return false;
+	}
 }
