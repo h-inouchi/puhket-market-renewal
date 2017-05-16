@@ -2,7 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Event\Event;
+use Cake\Utility\Hash;
+use Cake\ORM\TableRegistry;
 /**
  * LiveShowTitles Controller
  *
@@ -10,7 +12,17 @@ use App\Controller\AppController;
  */
 class LiveShowTitlesController extends AppController
 {
-
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+        $this->Auth->deny(
+            [
+                'index',
+                'add',
+                'edit',
+                'delete',
+            ]
+        );
+    }
     /**
      * Index method
      *
@@ -37,11 +49,10 @@ class LiveShowTitlesController extends AppController
     public function view($id = null)
     {
         $liveShowTitle = $this->LiveShowTitles->get($id, [
-            'contain' => ['Users', 'ComedyLiveShows', 'IkuyoComments', 'PersonalSchedules']
+            'contain' => []
         ]);
-
         $this->set('liveShowTitle', $liveShowTitle);
-        $this->set('_serialize', ['liveShowTitle']);
+        $this->set('title_for_layout', 'ライブ詳細：'.$liveShowTitle['LiveShowTitle']['title']);
     }
 
     /**

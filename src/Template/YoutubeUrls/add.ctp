@@ -1,27 +1,13 @@
+<h2 class="band-title"> Youtube動画（iframe URL）登録</h2>
+
 <?php
-/**
-  * @var \App\View\AppView $this
-  */
+echo $this->Form->create($youtubeUrl);
+echo $this->Form->control('title', ['label' => 'タイトル', 'required' => false]);
+echo $this->Form->control('url', ['label' => 'URL', 'required' => false]);
+echo $this->Form->control('youtube_category', [
+    'options' => [1 => '道化太陽のサンチャンネル', 2 => 'プーケットマーケットの動画'],
+    'default' => 1,
+]);
+echo $this->Form->button(__('Submit'));
+echo $this->Form->end();
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('List Youtube Urls'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="youtubeUrls form large-9 medium-8 columns content">
-    <?= $this->Form->create($youtubeUrl) ?>
-    <fieldset>
-        <legend><?= __('Add Youtube Url') ?></legend>
-        <?php
-            echo $this->Form->control('title');
-            echo $this->Form->control('url');
-            echo $this->Form->control('youtube_category');
-            echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
-</div>

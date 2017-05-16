@@ -1,44 +1,50 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $personalSchedule->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $personalSchedule->id)]
-            )
-        ?></li>
-        <li><?= $this->Html->link(__('List Personal Schedules'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Live Show Titles'), ['controller' => 'LiveShowTitles', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Live Show Title'), ['controller' => 'LiveShowTitles', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Places'), ['controller' => 'Places', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Place'), ['controller' => 'Places', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Unit Members'), ['controller' => 'UnitMembers', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Unit Member'), ['controller' => 'UnitMembers', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="personalSchedules form large-9 medium-8 columns content">
-    <?= $this->Form->create($personalSchedule) ?>
-    <fieldset>
-        <legend><?= __('Edit Personal Schedule') ?></legend>
-        <?php
-            echo $this->Form->control('schedule_date');
-            echo $this->Form->control('schedule_title');
-            echo $this->Form->control('schedule_detail');
-            echo $this->Form->control('start_time');
-            echo $this->Form->control('end_time');
-            echo $this->Form->control('live_show_title_id', ['options' => $liveShowTitles, 'empty' => true]);
-            echo $this->Form->control('place_id', ['options' => $places, 'empty' => true]);
-            echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
-            echo $this->Form->control('unit_member_id', ['options' => $unitMembers, 'empty' => true]);
-        ?>
-    </fieldset>
-    <?= $this->Form->button(__('Submit')) ?>
-    <?= $this->Form->end() ?>
+<div class="form-group">
+	<h2 class="band-title">個人予定編集</h2>
+	<?php
+	echo $this->Form->create($personalSchedule);
+	echo $this->Form->input('id', ['type' => 'hidden']);
+	echo $this->Form->input('unit_member_id', [
+		'label' => '個人名',
+	    'options' => $unitMembers,
+   		'class' => 'form-control',
+	]);
+	echo $this->Form->input('schedule_date', [
+		'label' => '日付',
+		'required' => false,
+		'class' => 'form-control',
+		'placeHolder' => '(例：2016/11/11)',
+	]);
+	echo $this->Form->input('schedule_title', [
+		'label' => '予定名',
+		'required' => false,
+		'class' => 'form-control',
+		'placeHolder' => '予定名を入れてください（必須）',
+	]);
+	echo $this->Form->input('start_time', [
+		'label' => '何時から',
+		'required' => false,
+		'class' => 'form-control',
+	]);
+	echo $this->Form->input('end_time', [
+		'label' => '何時まで',
+		'required' => false,
+		'class' => 'form-control',
+	]);
+	echo $this->Form->input('live_show_title_id', [
+		'label' => 'ライブ名',
+		'options' => $liveShowTitles,
+		'empty' => '',
+		'class' => 'form-control',
+		'type' => 'hidden',
+	]);
+	echo $this->Form->input('place_id', [
+		'label' => '場所',
+	    'options' => $places,
+		'empty' => '',
+   		'class' => 'form-control',
+		'type' => 'hidden',
+	]);
+	echo $this->Form->button(__('Submit'));
+	echo $this->Form->end();
+	?>
 </div>

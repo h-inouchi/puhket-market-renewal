@@ -2,7 +2,9 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Event\Event;
+use Cake\Utility\Hash;
+use Cake\ORM\TableRegistry;
 /**
  * Places Controller
  *
@@ -10,7 +12,17 @@ use App\Controller\AppController;
  */
 class PlacesController extends AppController
 {
-
+    public function beforeFilter(Event $event) {
+        parent::beforeFilter($event);
+        $this->Auth->deny(
+            [
+                'index',
+                'add',
+                'edit',
+                'delete',
+            ]
+        );
+    }
     /**
      * Index method
      *

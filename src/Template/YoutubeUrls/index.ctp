@@ -1,58 +1,23 @@
-<?php
-/**
-  * @var \App\View\AppView $this
-  */
-?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Youtube Url'), ['action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="youtubeUrls index large-9 medium-8 columns content">
-    <h3><?= __('Youtube Urls') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('title') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('url') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('youtube_category') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('user_id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($youtubeUrls as $youtubeUrl): ?>
-            <tr>
-                <td><?= $this->Number->format($youtubeUrl->id) ?></td>
-                <td><?= h($youtubeUrl->title) ?></td>
-                <td><?= h($youtubeUrl->url) ?></td>
-                <td><?= $this->Number->format($youtubeUrl->youtube_category) ?></td>
-                <td><?= $youtubeUrl->has('user') ? $this->Html->link($youtubeUrl->user->id, ['controller' => 'Users', 'action' => 'view', $youtubeUrl->user->id]) : '' ?></td>
-                <td><?= h($youtubeUrl->created) ?></td>
-                <td><?= h($youtubeUrl->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $youtubeUrl->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $youtubeUrl->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $youtubeUrl->id], ['confirm' => __('Are you sure you want to delete # {0}?', $youtubeUrl->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
+<h1 class="band-title"><?php echo $user['unit_name'] ?></h1>
+<h2 class="band-title" style="margin-top:1px; margin-bottom:10px;">Youtube動画一覧</h2>
+<div class="row" id="event-list">
+<?php foreach ($youtubeUrls as $youtubeUrl) : ?>
+	<div class="col-xs-12">
+		<div class="event-box btn-effect">
+			<div class="title list-top">
+				<?php echo $youtubeUrl['title'] ?>
+			</div>
+			<div class="content list-last">
+				<div class="video-wrapper">
+					<div class="video-container">
+		    			<?php echo $youtubeUrl['url'] ?>
+		    		</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php endforeach; ?>
+</div>
+<div class="paginator">
+	<?php echo $this->Paginator->numbers([]); ?>
 </div>

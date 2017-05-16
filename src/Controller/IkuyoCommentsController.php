@@ -2,7 +2,10 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
-
+use Cake\Event\Event;
+use Cake\Utility\Hash;
+use Cake\ORM\TableRegistry;
+use Cake\Mailer\Email;
 /**
  * IkuyoComments Controller
  *
@@ -10,107 +13,120 @@ use App\Controller\AppController;
  */
 class IkuyoCommentsController extends AppController
 {
+	public function beforeFilter(Event $event) {
+		parent::beforeFilter($event);
+		$this->Auth->deny(
+			[
+				'index',
+			]
+		);
+	}
+	public function view($id = null) {
+		$this->set('title_for_layout', '予約しました！');
+		$ikuyoComment = $this->IkuyoComments->get($id, [
+			'contain' => ['ComedyLiveShows','LiveShowTitles']
+		]);
 
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['ComedyLiveShows', 'LiveShowTitles']
-        ];
-        $ikuyoComments = $this->paginate($this->IkuyoComments);
+		$this->set('ikuyoComment', $ikuyoComment);
 
-        $this->set(compact('ikuyoComments'));
-        $this->set('_serialize', ['ikuyoComments']);
-    }
+		$users = TableRegistry::get('Users');
+		//unit_nameはライブ出演予定なくても取得するから別途select する
+		$query = $users->find('all',
+			[
+				'conditions' => [
+					'id' => $ikuyoComment->comedy_live_show->user_id,
+				],
+			]
+		);
+		$user = $query->first();
 
-    /**
-     * View method
-     *
-     * @param string|null $id Ikuyo Comment id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $ikuyoComment = $this->IkuyoComments->get($id, [
-            'contain' => ['ComedyLiveShows', 'LiveShowTitles']
-        ]);
+		$this->set('user', $user);
+	}
 
-        $this->set('ikuyoComment', $ikuyoComment);
-        $this->set('_serialize', ['ikuyoComment']);
-    }
+	public function index() {
+		$ikuyo_comments = $this->IkuyoComments->find('all',
+			[
+				'contain' => ['ComedyLiveShows','LiveShowTitles'],
+				'order' => [
+					'live_show_date' => 'asc',
+					'start' => 'asc',
+				],
+				'conditions' => [
+					'live_show_date >=' => date('Y/m/d'),
+					'ComedyLiveShows.user_id' => $this->Auth->user('id'),
+				],
+			]
+		);
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
-        $ikuyoComment = $this->IkuyoComments->newEntity();
-        if ($this->request->is('post')) {
-            $ikuyoComment = $this->IkuyoComments->patchEntity($ikuyoComment, $this->request->getData());
-            if ($this->IkuyoComments->save($ikuyoComment)) {
-                $this->Flash->success(__('The ikuyo comment has been saved.'));
+		$weekday = ['(日)', '(月)', '(火)', '(水)', '(木)', '(金)', '(土)'];
+		foreach ($ikuyo_comments as $ikuyo_comment) {
+			$week = $weekday[date('w', strtotime($ikuyo_comment->comedy_live_show->live_show_date))];
+			$ikuyo_comment->comedy_live_show->live_show_date =
+				date('Y/m/d ', strtotime( $ikuyo_comment->comedy_live_show->live_show_date ) ) . $week;
+		}
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The ikuyo comment could not be saved. Please, try again.'));
-        }
-        $comedyLiveShows = $this->IkuyoComments->ComedyLiveShows->find('list', ['limit' => 200]);
-        $liveShowTitles = $this->IkuyoComments->LiveShowTitles->find('list', ['limit' => 200]);
-        $this->set(compact('ikuyoComment', 'comedyLiveShows', 'liveShowTitles'));
-        $this->set('_serialize', ['ikuyoComment']);
-    }
+		$this->set('ikuyo_comments', $ikuyo_comments);
+		$this->set('title_for_layout', '予約一覧');
+	}
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Ikuyo Comment id.
-     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $ikuyoComment = $this->IkuyoComments->get($id, [
-            'contain' => []
-        ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $ikuyoComment = $this->IkuyoComments->patchEntity($ikuyoComment, $this->request->getData());
-            if ($this->IkuyoComments->save($ikuyoComment)) {
-                $this->Flash->success(__('The ikuyo comment has been saved.'));
+	public function add() {
+		$this->set('title_for_layout', 'プーケットマーケット　ライブ　行くよ！');
+		$this->set('comedy_live_show_id', $this->request->query['comedy_live_show_id']);
+		$this->set('live_show_title_id', $this->request->query['live_show_title_id']);
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The ikuyo comment could not be saved. Please, try again.'));
-        }
-        $comedyLiveShows = $this->IkuyoComments->ComedyLiveShows->find('list', ['limit' => 200]);
-        $liveShowTitles = $this->IkuyoComments->LiveShowTitles->find('list', ['limit' => 200]);
-        $this->set(compact('ikuyoComment', 'comedyLiveShows', 'liveShowTitles'));
-        $this->set('_serialize', ['ikuyoComment']);
-    }
+		$openDateTime = $this->request->query['date'] . ' ' . $this->request->query['open'] . '00';
+		$openDateTime30minBefore = date("Y/m/d H:i:s",strtotime($openDateTime . "-30 minute"));
+		$systemDateTime = date("Y/m/d H:i:s");
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Ikuyo Comment id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $ikuyoComment = $this->IkuyoComments->get($id);
-        if ($this->IkuyoComments->delete($ikuyoComment)) {
-            $this->Flash->success(__('The ikuyo comment has been deleted.'));
-        } else {
-            $this->Flash->error(__('The ikuyo comment could not be deleted. Please, try again.'));
-        }
+		if ($openDateTime30minBefore < $systemDateTime) {
+			$this->Flash->set('予約できるのは開場30分前までです・・・！');
+			$this->redirect(
+				[
+				'controller' => 'comedy_live_shows',
+				'action' => 'index',
+				]
+			);
+		}
 
-        return $this->redirect(['action' => 'index']);
-    }
+		$ikuyoComment = $this->IkuyoComments->newEntity();
+		if ($this->request->is('post')) {
+			$ikuyoComment = $this->IkuyoComments->patchEntity($ikuyoComment, $this->request->getData());
+			if ($this->IkuyoComments->save($ikuyoComment)) {
+
+				// email start
+				$ikuyoComment = $this->IkuyoComments->get($ikuyoComment->id, [
+					'contain' => ['ComedyLiveShows','LiveShowTitles']
+				]);
+
+				$unitMembersTable = TableRegistry::get('UnitMembers');
+
+				$unitMembers = $unitMembersTable->find('all',
+					[
+						'conditions' => [
+							'user_id' => $ikuyoComment->comedy_live_show->user_id,
+						],
+					]
+				);
+				$unitMemberMailAds = Hash::extract($unitMembers->toArray(), '{n}.mail_address');
+
+				if (count($unitMemberMailAds) > 0) {
+					(new Email('default'))
+						->setConfigForInformIkuyoCommentList()
+						->to($unitMemberMailAds)
+						->viewVars([
+							'ikuyo_comments' => $ikuyoComment,
+					])
+					->send();
+				}
+				// email end
+
+				$this->redirect(
+					[
+					'action' => 'view',
+					$ikuyoComment->id,
+					]
+				);
+			} 
+		}
+	}
 }

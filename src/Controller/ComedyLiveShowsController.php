@@ -62,7 +62,7 @@ class ComedyLiveShowsController extends AppController
 		foreach ($comedy_live_shows as $key => $comedy_live_show) {
 			$week = $weekday[date('w', strtotime($comedy_live_show->live_show_date))];
 			$comedy_live_show->live_show_date_week =
-				date('Y/m/d ', strtotime( $comedy_live_show['live_show_date'] ) ) . $week;
+				date('Y/m/d ', strtotime( $comedy_live_show->live_show_date ) ) . $week;
 		}
 		$this->set('comedy_live_shows', $comedy_live_shows);
 
@@ -89,7 +89,7 @@ class ComedyLiveShowsController extends AppController
 		$this->set('title_for_layout', 'ライブ一覧 プーケットマーケット');
 
 		/////// カレンダー用 ////////////
-		$schedule_dates = Hash::extract($comedy_live_shows->toArray(), '{n}.ComedyLiveShows.live_show_date');
+		$schedule_dates = Hash::extract($comedy_live_shows->toArray(), '{n}.live_show_date');
 		$schedules = $this->ScheduleManager->getNationalHolidayFromDate($date);
 		$y = Hash::get($schedules, 'y');
 		$m = Hash::get($schedules, 'm');

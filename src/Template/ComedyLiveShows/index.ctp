@@ -150,7 +150,12 @@
             </div>
             <div class="title list-middle">
                 <?php
-                echo $this->Html->link($comedy_live_show['live_show_title']['title'],'/liveShowTitles/view/'.$comedy_live_show['live_show_title']['id']);
+                echo $this->Html->link($comedy_live_show['live_show_title']['title'],
+                [
+                    'controller' => 'live_show_titles',
+                    'action' => 'view',
+                    $comedy_live_show['live_show_title']['id'],
+                ]);
                 ?>
             </div>
             <div class="place_name list-middle">
@@ -158,9 +163,9 @@
                 <?php
                 echo $this->Html->link($comedy_live_show['place']['name'],
                 [
-                    'controller' => 'place',
+                    'controller' => 'places',
                     'action' => 'view',
-                    $comedy_live_show['Place']['id'],
+                    $comedy_live_show['place']['id'],
                 ]);
                 ?>
             </div>
