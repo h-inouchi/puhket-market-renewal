@@ -15,8 +15,8 @@ class __TwigTemplate_dddb91a9a3eee2de0f11b67495f32cbfdb3fbdeefd86073d443d79c7038
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_d3e3b64d3c51c67887c7c3cd6e89f9eb8af35ce5c1838d5ab311cddecb61c382 = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
-        $__internal_d3e3b64d3c51c67887c7c3cd6e89f9eb8af35ce5c1838d5ab311cddecb61c382->enter($__internal_d3e3b64d3c51c67887c7c3cd6e89f9eb8af35ce5c1838d5ab311cddecb61c382_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig"));
+        $__internal_913cf154ee372f12ebdfda377ec2f9e01dd3fb5d1da40d859fcdd92800333463 = $this->env->getExtension("WyriHaximus\\TwigView\\Lib\\Twig\\Extension\\Profiler");
+        $__internal_913cf154ee372f12ebdfda377ec2f9e01dd3fb5d1da40d859fcdd92800333463->enter($__internal_913cf154ee372f12ebdfda377ec2f9e01dd3fb5d1da40d859fcdd92800333463_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig"));
 
         // line 1
         echo "<!DOCTYPE html>
@@ -170,37 +170,34 @@ class __TwigTemplate_dddb91a9a3eee2de0f11b67495f32cbfdb3fbdeefd86073d443d79c7038
 </head>
 <body>
 
-  ";
-        // line 57
-        echo $this->getAttribute((isset($context["Flash"]) ? $context["Flash"] : null), "render", array(), "method");
-        echo "
   <div class=\"jumbotron special\"></div>
 
   <div class=\"container clearfix\">
     ";
-        // line 61
+        // line 60
+        echo $this->getAttribute((isset($context["Flash"]) ? $context["Flash"] : null), "render", array(), "method");
+        echo "
+
+    ";
+        // line 62
         echo $this->getAttribute((isset($context["_view"]) ? $context["_view"] : null), "fetch", array(0 => "content"), "method");
         echo "
 
 ";
-        // line 63
+        // line 64
         if (((isset($context["controllerName"]) ? $context["controllerName"] : null) == "Top")) {
         } else {
-            // line 65
-            echo "    ";
-            $this->loadTemplate("../Modules/header.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig", 65)->display($context);
             // line 66
             echo "    ";
-            echo $this->getAttribute((isset($context["Html"]) ? $context["Html"] : null), "script", array(0 => "/assets/js/swiper.min.js"), "method");
-            echo "
-    <script>
-    var swiper = new Swiper('.swiper-container', {initialSlide: 4, freeMode: true, slidesPerView: \"auto\",
-      autoplay: 8000, centeredSlides: true,
-    });
-    </script>
-";
+            $this->loadTemplate("../Modules/header.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig", 66)->display($context);
+            // line 67
+            echo "    ";
+            $this->loadTemplate("../Modules/swiper-setting.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig", 67)->display($context);
+            // line 68
+            echo "    ";
+            $this->loadTemplate("../Modules/footer.twig", "/private/var/www/html/puhket-market-renewal/src/Template/Layout/default.twig", 68)->display($context);
         }
-        // line 73
+        // line 70
         echo "  </div>
 
   <script>
@@ -215,7 +212,7 @@ class __TwigTemplate_dddb91a9a3eee2de0f11b67495f32cbfdb3fbdeefd86073d443d79c7038
 </html>
 ";
         
-        $__internal_d3e3b64d3c51c67887c7c3cd6e89f9eb8af35ce5c1838d5ab311cddecb61c382->leave($__internal_d3e3b64d3c51c67887c7c3cd6e89f9eb8af35ce5c1838d5ab311cddecb61c382_prof);
+        $__internal_913cf154ee372f12ebdfda377ec2f9e01dd3fb5d1da40d859fcdd92800333463->leave($__internal_913cf154ee372f12ebdfda377ec2f9e01dd3fb5d1da40d859fcdd92800333463_prof);
 
     }
 
@@ -231,7 +228,7 @@ class __TwigTemplate_dddb91a9a3eee2de0f11b67495f32cbfdb3fbdeefd86073d443d79c7038
 
     public function getDebugInfo()
     {
-        return array (  204 => 73,  193 => 66,  190 => 65,  187 => 63,  182 => 61,  175 => 57,  168 => 53,  164 => 52,  160 => 51,  156 => 50,  142 => 38,  137 => 36,  133 => 35,  129 => 34,  125 => 33,  121 => 32,  117 => 31,  113 => 30,  108 => 29,  103 => 27,  99 => 26,  95 => 25,  92 => 24,  90 => 23,  85 => 21,  81 => 20,  77 => 19,  73 => 18,  69 => 17,  65 => 16,  61 => 15,  58 => 14,  52 => 12,  46 => 10,  44 => 9,  39 => 7,  35 => 6,  31 => 5,  27 => 4,  22 => 1,);
+        return array (  201 => 70,  197 => 68,  194 => 67,  191 => 66,  188 => 64,  183 => 62,  178 => 60,  168 => 53,  164 => 52,  160 => 51,  156 => 50,  142 => 38,  137 => 36,  133 => 35,  129 => 34,  125 => 33,  121 => 32,  117 => 31,  113 => 30,  108 => 29,  103 => 27,  99 => 26,  95 => 25,  92 => 24,  90 => 23,  85 => 21,  81 => 20,  77 => 19,  73 => 18,  69 => 17,  65 => 16,  61 => 15,  58 => 14,  52 => 12,  46 => 10,  44 => 9,  39 => 7,  35 => 6,  31 => 5,  27 => 4,  22 => 1,);
     }
 
     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
@@ -300,21 +297,18 @@ class __TwigTemplate_dddb91a9a3eee2de0f11b67495f32cbfdb3fbdeefd86073d443d79c7038
 </head>
 <body>
 
-  {{ Flash.render()|raw }}
   <div class=\"jumbotron special\"></div>
 
   <div class=\"container clearfix\">
+    {{ Flash.render()|raw }}
+
     {{ _view.fetch('content')|raw }}
 
 {% if controllerName == \"Top\" %}
 {% else %}
     {% include '../Modules/header.twig' %}
-    {{ Html.script('/assets/js/swiper.min.js')|raw }}
-    <script>
-    var swiper = new Swiper('.swiper-container', {initialSlide: 4, freeMode: true, slidesPerView: \"auto\",
-      autoplay: 8000, centeredSlides: true,
-    });
-    </script>
+    {% include '../Modules/swiper-setting.twig' %}
+    {% include '../Modules/footer.twig' %}
 {% endif %}
   </div>
 

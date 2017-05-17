@@ -375,36 +375,7 @@
         </div><!-- /pager -->
       </div><!-- /dataList -->
 
-      <div class="siteFooter">
-        <div class="footInr">
-          <h3><img src="/assets/imgs/common/footer/foot-h.gif" width="60" alt="Pick Up"/></h3>
-          <h4><img src="/assets/imgs/common/footer/foot-h2-project.gif" width="96" alt="関連事業"/></h4>
-          <ul class="bnrs">
-            <li>
-              <h5 class="btText"><a href="/">写真</a></h5>
-              <p>写真ですー！みてね！</p>
-            </li>
-            <li>
-              <h5 class="btText"><a href="/">ブログ</a></h5>
-              <p>たまに更新されるブログ。</p>
-            </li>
-            <li>
-              <h5 class="btText"><a href="/">リンク</a></h5>
-              <p>Twitterや道化太陽のサンチャンネルの出演動画へのリンク。</p>
-            </li>
-            <li>
-              <h5 class="btText"><a href="/">ゲーム</a></h5>
-              <p>ゲームをつくっています。プレイしてみてね！</p>
-            </li>
-          </ul>
-          <div class="txtLinks">
-              <a href="/">サイトマップ</a>　|　{{ Html.link('ログイン', {'controller': "users", 'action': "login"})|raw }}
-          </div>
-          <div class="copyrights">
-            <p>&copy; 2016-<?php echo date('Y');?> puhket-market.com.</p>
-          </div><!-- /copyrights -->
-        </div><!-- /footInr -->
-      </div><!-- /siteFooter -->
+        {% include '../Modules/footer.twig' %}
 
       <div class="hiddenSpMenuClose">
       </div><!-- /hiddenSpMenuClose -->

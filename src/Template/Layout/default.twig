@@ -54,21 +54,18 @@
 </head>
 <body>
 
-  {{ Flash.render()|raw }}
   <div class="jumbotron special"></div>
 
   <div class="container clearfix">
+    {{ Flash.render()|raw }}
+
     {{ _view.fetch('content')|raw }}
 
 {% if controllerName == "Top" %}
 {% else %}
     {% include '../Modules/header.twig' %}
-    {{ Html.script('/assets/js/swiper.min.js')|raw }}
-    <script>
-    var swiper = new Swiper('.swiper-container', {initialSlide: 4, freeMode: true, slidesPerView: "auto",
-      autoplay: 8000, centeredSlides: true,
-    });
-    </script>
+    {% include '../Modules/swiper-setting.twig' %}
+    {% include '../Modules/footer.twig' %}
 {% endif %}
   </div>
 

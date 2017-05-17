@@ -2,108 +2,62 @@
 namespace App\Controller;
 
 use App\Controller\AppController;
+use Cake\Event\Event;
+use Cake\Utility\Hash;
+use Cake\ORM\TableRegistry;
+class InningHighScoresController extends AppController {
 
-/**
- * InningHighScores Controller
- *
- * @property \App\Model\Table\InningHighScoresTable $InningHighScores
- */
-class InningHighScoresController extends AppController
-{
-
-    /**
-     * Index method
-     *
-     * @return \Cake\Network\Response|null
-     */
-    public function index()
-    {
-        $inningHighScores = $this->paginate($this->InningHighScores);
-
-        $this->set(compact('inningHighScores'));
-        $this->set('_serialize', ['inningHighScores']);
-    }
-
-    /**
-     * View method
-     *
-     * @param string|null $id Inning High Score id.
-     * @return \Cake\Network\Response|null
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function view($id = null)
-    {
-        $inningHighScore = $this->InningHighScores->get($id, [
-            'contain' => []
-        ]);
-
-        $this->set('inningHighScore', $inningHighScore);
-        $this->set('_serialize', ['inningHighScore']);
-    }
-
-    /**
-     * Add method
-     *
-     * @return \Cake\Network\Response|null Redirects on successful add, renders view otherwise.
-     */
-    public function add()
-    {
+    public function add() {
+        $this->set('title_for_layout', 'ハイスコア');
+        $gameName = Hash::get($this->request->query, 'gameName', 0);
+        
+        if ($this->request->session()->check('high_score')){
+            $highScore = $this->request->session()->read('high_score');
+            $this->set([
+                'high_score' => $highScore,
+                'game_name' => $gameName,
+            ]);
+        } else {
+            $this->redirect(
+                [
+                    'controller' => 'inning_high_scores',
+                    'action' => 'index',
+                    'gameName' => $gameName
+                ]
+            );
+        }
         $inningHighScore = $this->InningHighScores->newEntity();
         if ($this->request->is('post')) {
-            $inningHighScore = $this->InningHighScores->patchEntity($inningHighScore, $this->request->getData());
-            if ($this->InningHighScores->save($inningHighScore)) {
-                $this->Flash->success(__('The inning high score has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The inning high score could not be saved. Please, try again.'));
+            $postedHighScore = $this->InningHighScores->patchEntity($inningHighScore, $this->request->getData());
+            $postedHighScore['high_score'] = $this->request->session()->read('high_score');
+            $this->__save($postedHighScore);
+            $this->request->session()->delete('high_score');
         }
         $this->set(compact('inningHighScore'));
         $this->set('_serialize', ['inningHighScore']);
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id Inning High Score id.
-     * @return \Cake\Network\Response|null Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Network\Exception\NotFoundException When record not found.
-     */
-    public function edit($id = null)
-    {
-        $inningHighScore = $this->InningHighScores->get($id, [
-            'contain' => []
+    public function index() {
+        $gameName = Hash::get($this->request->query, 'gameName', 0);
+        $query = $this->InningHighScores->find('getTop10', ['gameName' => $gameName]);
+        $inning_high_scores = $query->all();
+
+        $this->set([
+            'title_for_layout' => 'ハイスコア一覧',
+            'inning_high_scores' => $inning_high_scores,
+            'game_name' => $gameName,
         ]);
-        if ($this->request->is(['patch', 'post', 'put'])) {
-            $inningHighScore = $this->InningHighScores->patchEntity($inningHighScore, $this->request->getData());
-            if ($this->InningHighScores->save($inningHighScore)) {
-                $this->Flash->success(__('The inning high score has been saved.'));
-
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The inning high score could not be saved. Please, try again.'));
-        }
-        $this->set(compact('inningHighScore'));
-        $this->set('_serialize', ['inningHighScore']);
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id Inning High Score id.
-     * @return \Cake\Network\Response|null Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
-    public function delete($id = null)
-    {
-        $this->request->allowMethod(['post', 'delete']);
-        $inningHighScore = $this->InningHighScores->get($id);
-        if ($this->InningHighScores->delete($inningHighScore)) {
-            $this->Flash->success(__('The inning high score has been deleted.'));
-        } else {
-            $this->Flash->error(__('The inning high score could not be deleted. Please, try again.'));
+    private function __save($posted){
+        if ($this->InningHighScores->save($posted)) {
+            $this->redirect(
+                [
+                    'controller' => 'inning_high_scores',
+                    'action' => 'index',
+                    'gameName' => Hash::get($posted, 'InningHighScore.game_name'),
+                ]
+            );
         }
-
-        return $this->redirect(['action' => 'index']);
     }
 }

@@ -51,6 +51,20 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/', ['controller' => 'Top', 'action' => 'index']);
 
+
+    $routes->connect('/:userId',
+        ['controller' => 'comedy-live-shows', 'action' => 'index'],
+        ['userId' => '[0-9]+']
+    );
+
+    $routes->connect('posts/:userId',
+        ['controller' => 'posts', 'action' => 'index'],
+        ['userId' => '[0-9]+']
+    );
+
+    $routes->connect('/game/baseball',
+        ['controller' => 'batter-boxes', 'action' => 'edit']
+    );
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */

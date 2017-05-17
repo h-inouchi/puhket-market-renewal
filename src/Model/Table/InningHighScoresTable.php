@@ -38,6 +38,56 @@ class InningHighScoresTable extends Table
 
         $this->addBehavior('Timestamp');
     }
+    public $validate = [
+        'player_name' => [
+            'notEmpty' => [
+                'rule' => 'notBlank',
+                'required' => true,
+                'message' => '名前を入力してください。',
+            ],
+            'maxLength' => [
+                'rule' => ['maxLength', 25],
+                'message' => '名前を２５字以内で入力してください。',
+            ]
+        ],
+    ];
+
+    public function getTop10($gameName = "") {
+        return $this->find('all', [
+            'fields' => [
+                'player_name',
+                'high_score'
+            ],
+            'conditions' => [
+                'high_score BETWEEN ? AND ?' => [1, 100],
+                'game_name' => $gameName,
+            ],
+            'order' => ['high_score' => 'DESC'],
+            'limit' => 10,
+        ]);
+    }
+
+    public function findGetTop10(Query $query, array $options)
+    {
+        $gameName = $options['gameName'];
+        $query->select([
+            'player_name',
+            'high_score'
+        ]);
+        $query->where([
+            'game_name' => $gameName,
+        ]);
+        $query->where(function ($exp, $q) {
+            return $exp->between('high_score', 1, 100);
+        });
+        $query->order([
+            'high_score' => 'DESC'
+        ]);
+        $query->limit(
+            10
+        );
+        return $query;
+    }
 
     /**
      * Default validation rules.
