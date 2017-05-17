@@ -7,7 +7,9 @@
 <?php foreach ($movers as $mover) : ?>
               <li class="loaded swiper-slide">
                 <a href=<?php echo $mover['url']; ?>>
-                  <img src=<?php echo $mover['image']; ?> alt="プーケットマーケット"/>
+                  <?php
+                    echo $this->Html->image($mover['image'],['alt' => 'alt']); 
+                  ?>
                 </a>
               </li>
 <?php endforeach; ?>
@@ -20,7 +22,9 @@
 <?php foreach ($movers as $mover) : ?>
                   <li class="loaded swiper-slide">
                     <a href=<?php echo $mover['url']; ?>>
-                      <img src=<?php echo $mover['image']; ?> alt="プーケットマーケット"/>
+                    <?php
+                      echo $this->Html->image($mover['image'],['alt' => 'alt']); 
+                    ?>
                     </a>
                   </li>
 <?php endforeach; ?>
