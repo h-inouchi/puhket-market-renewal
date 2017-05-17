@@ -2,7 +2,7 @@
 {% for mover_thumb in mover_thumbs %}
   <li>
     <a href="{{ mover_thumb.url }}">
-      <img src="{{ mover_thumb.image }}"/>
+      {{ Html.image( mover_thumb.image ,{'alt': "プーケットマーケット" })|raw }}
     </a>
   </li>
 {% endfor %}
