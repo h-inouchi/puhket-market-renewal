@@ -16,47 +16,47 @@ app.Conf = {
 	NEWS_RPP: 20,
 	API: {
 		"calender": {
-			"path_pro": "/api/calender/",
-			"path": "/-dammy-api/calender.json",
+			"path_pro": window.location.href + "/api/calender/",
+			"path": window.location.href + "/-dammy-api/calender.json",
 			"method":"get"
 		},
 		"news": {
-			"path_pro": "/api/news/",
+			"path_pro": window.location.href + "/api/news/",
 			//"path_pro": "/-dammy-api/news.json",
-			"path": "/-dammy-api/news.json",
+			"path": window.location.href + "/-dammy-api/news.json",
 			"method":"get"
 		},
 		"related": {
-			"path_pro": "/api/related/",
-//			"path": "/-dammy-api/related.json",
-			"path": "/-dammy-api/related-profile.json",
+			"path_pro": window.location.href + "/api/related/",
+//			"path":  window.location.href + "/-dammy-api/related.json",
+			"path": window.location.href + "/-dammy-api/related-profile.json",
 			"method":"get"
 		},
 		"profile": {
-			"path_pro": "/api/profile/",
-			"path": "/-dammy-api/profile.json",
+			"path_pro": window.location.href + "/api/profile/",
+			"path": window.location.href + "/-dammy-api/profile.json",
 			"method":"get"
 		},
 		"onair": {
-			"path_pro": "/api/onair/",
-//			"path_pro": "/-dammy-api/onair.json",
-			"path": "/-dammy-api/onair.json",
-//			"path": "/-dammy-api/onair-guest.json",
+			"path_pro": window.location.href + "/api/onair/",
+//			"path_pro": window.location.href + "/-dammy-api/onair.json",
+			"path": window.location.href + "/-dammy-api/onair.json",
+//			"path": window.location.href + "/-dammy-api/onair-guest.json",
 			"method":"get"
 		},
 		"clip": {
-			"path_pro": "/api/search/",
-			"path": "/-dammy-api/search.json",
+			"path_pro": window.location.href + "/api/search/",
+			"path": window.location.href + "/-dammy-api/search.json",
 			"method":"get"
 		},
 		"keyword": {
-			"path_pro": "/api/keywords/",
-			"path": "/-dammy-api/keyword.json",
+			"path_pro": window.location.href + "/api/keywords/",
+			"path": window.location.href + "/-dammy-api/keyword.json",
 			"method":"get"
 		},
 		"search": {
-			"path_pro": "/api/search/",
-			"path": "/-dammy-api/search.json",
+			"path_pro": window.location.href + "/api/search/",
+			"path": window.location.href + "/-dammy-api/search.json",
 			"method":"get"
 		}
 	}
