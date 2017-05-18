@@ -21,16 +21,16 @@
   {{ Html.meta({'property': "og:image", 'content': ogImageUrl })|raw }}
 
   {% if controllerName == "Top" %}
-    {{ Html.script("/assets/js/libs.min.js?_=140612", {'charset': "UTF-8"})|raw }}
-    {{ Html.css("/assets/css/app.css?_=140612", {'media': "all"})|raw }}
-    {{ Html.css("/assets/css/print.css?_=140612", {'media': "print"})|raw }}
+    {{ Html.script("libs.min.js?_=140612", {'charset': "UTF-8"})|raw }}
+    {{ Html.css("app.css?_=140612", {'media': "all"})|raw }}
+    {{ Html.css("print.css?_=140612", {'media': "print"})|raw }}
     {{ Html.css("http://fonts.googleapis.com/css?family=Marmelad")|raw }}
   {% else %}
     {{ Html.css('cake.generic')|raw }}
     {{ Html.css('bootstrap')|raw }}
     {{ Html.css('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css')|raw }}
     {{ Html.css('main')|raw }}
-    {{ Html.css('/assets/css/app-slider.css')|raw }}
+    {{ Html.css('app-slider.css')|raw }}
     {{ Html.script('vendor/jquery-1.11.2.min')|raw }}
     {{ Html.script('vendor/modernizr-2.8.3-respond-1.4.2.min')|raw }}
     {{ Html.script('vendor/bootstrap.min')|raw }}

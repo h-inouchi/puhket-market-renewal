@@ -1,52 +1,69 @@
+<style>
+#slider {
+  display: none;
+}
+</style>
+<h2 class="band-title">あなたは何連続勝てる？！<br/>KENKEN都道府県じゃんけん！</h2>
+<div class="img-wrapper" style="text-align:center; margin:10px 0;">
+  <?php echo $this->Html->Image($shuffleTodouhuken); ?>
+  <?php echo $todouhukenName;?>
+</div>
+<h3 class="band-title">次に出てくる都道府県を予想しよう！<br/><br/>今の都道府県より東か西か北か南か？<br/><br/>選んだら東西南北のどれかをタップ！<br/><br/></h3>
+<div class="renzokuVictory" style="font-weight:bold; color:red; text-align:center; margin:10px 0;">
 <?php
-/**
-  * @var \App\View\AppView $this
-  */
+if ($renzokuVictory == 1) {
+	echo $renzokuVictory . "勝！！";
+} else if ($renzokuVictory > 1) {
+	echo $renzokuVictory . "連勝！！";
+}
 ?>
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Todouhuken'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="todouhukens index large-9 medium-8 columns content">
-    <h3><?= __('Todouhukens') ?></h3>
-    <table cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('from_north_ranking') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('from_east_ranking') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('created') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('modified') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($todouhukens as $todouhuken): ?>
-            <tr>
-                <td><?= $this->Number->format($todouhuken->id) ?></td>
-                <td><?= $this->Number->format($todouhuken->from_north_ranking) ?></td>
-                <td><?= $this->Number->format($todouhuken->from_east_ranking) ?></td>
-                <td><?= h($todouhuken->created) ?></td>
-                <td><?= h($todouhuken->modified) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $todouhuken->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $todouhuken->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $todouhuken->id], ['confirm' => __('Are you sure you want to delete # {0}?', $todouhuken->id)]) ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(['format' => __('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')]) ?></p>
-    </div>
+</div>
+<div id="board">
+<?php
+for ($num = 1; $num <= 9; $num++){
+	$anchorText = '';
+	switch ($num) {
+		case 2:
+		  $anchorText = '北';
+		break;
+		case 4:
+		  $anchorText = '西';
+		break;
+		case 6:
+		  $anchorText = '東';
+		break;
+		case 8:
+		  $anchorText = '南';
+		break;
+		default:
+		break;
+	}
+	switch ($num) {
+		case 2:
+		case 4:
+		case 6:
+		case 8:
+		  echo '<div id="' . $num . '" class= "panel pitched">';
+		  echo $this->Form->postLink($anchorText,
+			[
+				'controller' => 'todouhukens',
+				'action' => 'index',
+				'panelNumber' => $num,
+			],
+			[
+				'style' => ['position:absolute; top:0; left:0; width:100%; height:100%; color:blue; font-weight:bold; font-size:24px; line-height:33px;']
+			]
+		  );
+		break;
+		default:
+		  echo '<div id="' . $num . '" class= "panel" style="background:white;box-shadow:0 4px 0 #fff;">';
+		break;
+	}
+	echo '</div>';
+
+	if ($num % 3 === 0) {
+		echo '</br>';
+	}
+}
+?>
 </div>

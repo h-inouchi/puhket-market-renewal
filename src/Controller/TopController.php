@@ -17,7 +17,7 @@ class TopController extends AppController
 	{
 		$mover = [
 			"url" => "http://puhket-market.com",
-			"image" =>  $this->request->webroot . "/img/w784_h297_senzai_syasin.jpg",
+			"image" =>  $this->request->webroot . "img/w784_h297_senzai_syasin.jpg",
 		];
 
 		$movers[] = $mover;

@@ -31,10 +31,10 @@ $(function(){
 	<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 		<li class="event-box btn-effect">
 			<div class="live_show_date list-top">
-				<?php echo '名前：' . $inning_high_score['InningHighScore']['player_name']; ?>
+				<?php echo '名前：' . $inning_high_score['player_name']; ?>
 			</div>
 			<div class="ticket_count list-last" style="margin-left:10px;">
-				<?php echo 'スコア：' . $inning_high_score['InningHighScore']['high_score']; ?>
+				<?php echo 'スコア：' . $inning_high_score['high_score']; ?>
 			</div>
 		</li>
 	</div>

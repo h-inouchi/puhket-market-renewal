@@ -30,7 +30,7 @@ class APINewsController extends APIController
             "newmark" => false,
             "display_top" => false,
             "text_hide" => false,
-            "thum" => $this->request->webroot . "/img/w382_size_change.png",
+            "thum" => $this->request->webroot . "img/w382_size_change.png",
             "thum_h" => 250,
             "thum_w" => 382,
             "image" => "../img/w579_senzai_capture.png",

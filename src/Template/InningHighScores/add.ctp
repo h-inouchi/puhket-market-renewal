@@ -18,5 +18,6 @@ echo $this->Form->create($inningHighScore);
 echo $this->Form->hidden('game_name', ['value' => $game_name]);
 echo $this->Form->input('player_name', ['label' => '名前', 'required' => false]);
 echo $this->Form->input('high_score', ['label' => 'ハイスコア', 'readonly' => 'readonly', 'value' => $high_score]);
-echo $this->Form->end('入力完了！');
+echo $this->Form->button(__('入力完了！'));
+echo $this->Form->end();
 ?>

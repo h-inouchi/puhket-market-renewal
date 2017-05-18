@@ -62,7 +62,7 @@ h3.band-title {
 	left: 15px;
 }
 .siteLogo a {
-	background: url(/assets/imgs/common/header/head-logo.png) no-repeat left top;
+	background: url(../img/assets/imgs/common/header/head-logo.png) no-repeat left top;
 	display: block;
 	width: 75px;
 	height: 37px;
